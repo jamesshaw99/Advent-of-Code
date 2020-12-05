@@ -96,35 +96,5 @@ public class day5 {
                 break;
             }
         }
-        //System.out.println(list.get(0));
-
-        /*System.out.println("");
-
-        System.out.println("Part2");
-        for (int k = 0; k < 100; k++){
-            for (int j = 0; j < 100; j++){
-                list2 = new ArrayList<Integer>(dataList);
-                list2.set(1, k);
-                list2.set(2, j);
-                for (int i = 0; i < list2.size(); i++) {
-                    if(i % 4 == 0){
-                        if(list2.get((i+3)) < list2.size()) {
-                            if (list2.get(i) == 1) {
-                                list2.set(list2.get((i + 3)), list2.get(list2.get((i + 1))) + list2.get(list2.get((i + 2))));
-                            } else if (list.get(i) == 2) {
-                                list2.set(list2.get((i + 3)), list2.get(list2.get((i + 1))) * list2.get(list2.get((i + 2))));
-                            } else if (list2.get(i) == 99) {
-                                break;
-                            }
-                        }
-                    }
-                }
-                if(list2.get(0) == 19690720){
-                    System.out.println("noun: " + k);
-                    System.out.println("verb: " + j);
-                    break;
-                }
-            }
-        }*/
     }
 }
