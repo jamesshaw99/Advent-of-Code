@@ -18,7 +18,7 @@ public class day3 {
         return null;
     }
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         String fileName= "inputs/day3.csv";
         File file= new File(fileName);
 
@@ -42,7 +42,7 @@ public class day3 {
         }
 
 
-        Map<String, Integer> wire = new HashMap<String, Integer>();
+        Map<String, Integer> wire = new HashMap<>();
         String[] input = lines.get(0).toArray(new String[0]);
 
         int closestDistance = Integer.MAX_VALUE;
@@ -50,10 +50,11 @@ public class day3 {
 
         int x = 0, y = 0, d = 0;
 
-        for (int i = 0; i < input.length; i++) {
-            int[] dir = getDir(input[i].charAt(0));
-            int len = Integer.parseInt(input[i].substring(1));
+        for (String s : input) {
+            int[] dir = getDir(s.charAt(0));
+            int len = Integer.parseInt(s.substring(1));
             for (int j = 0; j < len; j++) {
+                assert dir != null;
                 int newX = x + dir[0];
                 int newY = y + dir[1];
                 wire.put(newX + "_" + newY, ++d);
@@ -65,16 +66,17 @@ public class day3 {
         input = lines.get(1).toArray(new String[0]);
         x = y = d = 0;
 
-        for(int i = 0; i < input.length; i++) {
-            int[] dir = getDir(input[i].charAt(0));
-            int len = Integer.parseInt(input[i].substring(1));
+        for (String s : input) {
+            int[] dir = getDir(s.charAt(0));
+            int len = Integer.parseInt(s.substring(1));
             for (int j = 0; j < len; j++) {
+                assert dir != null;
                 int newX = x + dir[0];
                 int newY = y + dir[1];
                 d++;
 
-                if(wire.containsKey(newX + "_" + newY)) {
-                    closestDistance = Math.min(closestDistance, (int)Math.abs(newX) + (int)Math.abs(newY));
+                if (wire.containsKey(newX + "_" + newY)) {
+                    closestDistance = Math.min(closestDistance, Math.abs(newX) + Math.abs(newY));
                     shortestWire = Math.min(shortestWire, wire.get(newX + "_" + newY) + d);
                 }
                 x = newX;

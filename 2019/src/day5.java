@@ -5,40 +5,26 @@ import java.util.Scanner;
 
 public class day5 {
     public static void main(String[] args) {
-        List<Integer> dataList = new ArrayList<Integer>();
+        List<Integer> dataList = new ArrayList<>();
         File file = new File("inputs/day5.txt");
-        BufferedReader reader = null;
 
-        try {
-            reader = new BufferedReader(new FileReader(file));
-            String text = null;
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            String text;
 
             while ((text = reader.readLine()) != null) {
                 dataList.add(Integer.parseInt(text));
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            try {
-                if (reader != null) {
-                    reader.close();
-                }
-            } catch (IOException e) {
-            }
         }
 
-        List<Integer> list = new ArrayList<Integer>(dataList);
-        List<Integer> list2 = new ArrayList<Integer>(dataList);
+        List<Integer> list = new ArrayList<>(dataList);
 
         System.out.println("Part1");
-        //list.set(1, 12);
-        //list.set(2, 2);
         int i = 0;
         while (i < list.size()) {
             int opcode = list.get(i) % 100;
-            int param1Mode = 0, param2Mode = 0, param3Mode = 0;
+            int param1Mode = 0, param2Mode = 0;
             if (list.get(i) >= 100){
                 param1Mode = (list.get(i) - opcode)/100%10;
             }

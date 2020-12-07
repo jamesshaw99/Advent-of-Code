@@ -58,7 +58,7 @@ public class day2 {
         }
         System.out.println("Number of valid passwords = " + noValid);
 
-        System.out.println("");
+        System.out.print("\n");
 
         System.out.println("Part 2");
         int noValid2 = 0;
@@ -66,7 +66,6 @@ public class day2 {
             int columnNo = 1;
             String value1 = "", value2 = "";
             char searchChar = ' ';
-            int charCount = 0;
             for (String value: line) {
                 if (columnNo == 1){
                     value1 = value.substring(0, value.indexOf("-"));

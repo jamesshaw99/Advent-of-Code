@@ -5,38 +5,26 @@ import java.util.regex.Pattern;
 
 public class day4 {
     public static void main(String[] args) {
-        List<String> data = new ArrayList<String>();
+        List<String> data = new ArrayList<>();
         File file = new File("inputs/day4.txt");
-        BufferedReader reader = null;
 
-        try {
-            reader = new BufferedReader(new FileReader(file));
-            String text = null;
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            String text;
 
             while ((text = reader.readLine()) != null) {
                 data.add(text);
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            try {
-                if (reader != null) {
-                    reader.close();
-                }
-            } catch (IOException e) {
-            }
         }
 
-        int passportNo = 0;
         List<Map<String, String>> passports = new ArrayList<>();
         Map<String, String> passport = new HashMap<>();
         for (String line: data){
             if (line != null && !line.isEmpty()){
                 String[] parts = line.split(" ");
-                for (int i = 0; i < parts.length; i++) {
-                    String[] part = parts[i].split(":");
+                for (String s : parts) {
+                    String[] part = s.split(":");
                     passport.put(part[0], part[1]);
                 }
             } else {

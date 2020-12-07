@@ -5,32 +5,21 @@ import java.util.List;
 
 public class day5 {
     public static void main(String[] args) {
-        List<String> list = new ArrayList<String>();
+        List<String> list = new ArrayList<>();
         File file = new File("data.txt");
-        BufferedReader reader = null;
 
-        try {
-            reader = new BufferedReader(new FileReader(file));
-            String text = null;
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            String text;
 
             while ((text = reader.readLine()) != null) {
                 list.add(text);
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            try {
-                if (reader != null) {
-                    reader.close();
-                }
-            } catch (IOException e) {
-            }
         }
 
         System.out.println("Part1");
-        List<Integer> SeatIDs = new ArrayList<Integer>();
+        List<Integer> SeatIDs = new ArrayList<>();
         for (String line: list) {
             int rowNo = Integer.parseInt(line.substring(0,7).replaceAll("F", "0").replaceAll("B", "1"),2);
             int columnNo = Integer.parseInt(line.substring(7).replaceAll("R", "1").replaceAll("L", "0"),2);

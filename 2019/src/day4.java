@@ -1,10 +1,6 @@
 public class day4 {
     public static boolean rule1(String value){
-        if(value.length() == 6){
-            return true;
-        } else {
-            return false;
-        }
+        return value.length() == 6;
     }
 
     public static boolean rule2(String value) {

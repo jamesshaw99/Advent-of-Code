@@ -1,36 +1,16 @@
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class day7 {
-    public static void main(String[] args) {
-        List<Integer> dataList = new ArrayList<Integer>();
-        File file = new File("inputs/day7test.txt");
-        BufferedReader reader = null;
+    public static void main(String[] args) throws FileNotFoundException {
+        Scanner scanner = new Scanner( new File("inputs/day7test.txt"));
+        String text = scanner.useDelimiter("\\A").next();
+        scanner.close();
 
-        try {
-            reader = new BufferedReader(new FileReader(file));
-            String text = null;
 
-            while ((text = reader.readLine()) != null) {
-                dataList.add(Integer.parseInt(text));
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (reader != null) {
-                    reader.close();
-                }
-            } catch (IOException e) {
-            }
-        }
 
-        List<List<Integer>> inputs = new ArrayList<>();
+
+        /*List<List<Integer>> inputs = new ArrayList<>();
 
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++){
@@ -51,29 +31,30 @@ public class day7 {
                 }
             }
         }
-        List<Integer> output = new ArrayList<Integer>();
-        List<Integer> finalOutput = new ArrayList<Integer>();
+        System.out.println(inputs);
+        List<Integer> output = new ArrayList<>();
+        List<Integer> finalOutput = new ArrayList<>();
         for (List<Integer> phaseSettings: inputs){
             int input = 0;
             for (int i = 0; i < 5; i++){
-                List<Integer> result = new ArrayList<Integer>(doIntcode(dataList, phaseSettings.get(i), input));
+                List<Integer> result = new ArrayList<>(doIntcode(dataList, phaseSettings.get(i), input));
                 System.out.println(result);
                 input = result.get(0);
                 output.add(input);
             }
             finalOutput.add(Collections.max(output));
         }
-        System.out.println(Collections.max(finalOutput));
+        System.out.println(Collections.max(finalOutput));*/
 
 
     }
 
     public static List<Integer> doIntcode(List<Integer> list, int input1, int input2){
-        List<Integer> outputs = new ArrayList<Integer>();
+        List<Integer> outputs = new ArrayList<>();
         int i = 0;
         while (i < list.size()) {
             int opcode = list.get(i) % 100;
-            int param1Mode = 0, param2Mode = 0, param3Mode = 0;
+            int param1Mode = 0, param2Mode = 0;
             if (list.get(i) >= 100){
                 param1Mode = (list.get(i) - opcode)/100%10;
             }

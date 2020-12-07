@@ -5,28 +5,17 @@ import java.util.List;
 
 public class day1 {
     public static void main(String[] args) {
-        List<Integer> list = new ArrayList<Integer>();
+        List<Integer> list = new ArrayList<>();
         File file = new File("inputs/day1.txt");
-        BufferedReader reader = null;
 
-        try {
-            reader = new BufferedReader(new FileReader(file));
-            String text = null;
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            String text;
 
             while ((text = reader.readLine()) != null) {
                 list.add(Integer.parseInt(text));
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            try {
-                if (reader != null) {
-                    reader.close();
-                }
-            } catch (IOException e) {
-            }
         }
 
         Collections.sort(list);

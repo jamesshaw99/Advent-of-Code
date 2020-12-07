@@ -4,28 +4,17 @@ import java.util.List;
 
 public class day3 {
     public static void main(String[] args) {
-        List<String> map = new ArrayList<String>();
+        List<String> map = new ArrayList<>();
         File file = new File("inputs/day3.txt");
-        BufferedReader reader = null;
 
-        try {
-            reader = new BufferedReader(new FileReader(file));
-            String text = null;
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            String text;
 
             while ((text = reader.readLine()) != null) {
                 map.add(text);
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            try {
-                if (reader != null) {
-                    reader.close();
-                }
-            } catch (IOException e) {
-            }
         }
 
         System.out.println("Part1");
@@ -42,7 +31,7 @@ public class day3 {
         }
         System.out.println("Number of trees passed: " + noTrees);
 
-        System.out.println("");
+        System.out.print("\n");
 
         System.out.println("Part 2");
         Integer[][] Routes = {{1,1},{3,1},{5,1},{7,1},{1,2}};
