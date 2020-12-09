@@ -1,26 +1,18 @@
-import java.io.*;
+package AoC.days;
+
+import AoC.Day;
+
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class day4 {
-    public static void main(String[] args) {
-        List<String> data = new ArrayList<>();
-        File file = new File("inputs/day4.txt");
+public class day4 extends Day {
+    private List<Map<String, String>> passports = new ArrayList<>();
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-            String text;
-
-            while ((text = reader.readLine()) != null) {
-                data.add(text);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        List<Map<String, String>> passports = new ArrayList<>();
+    public day4(String fileStr) {
+        super(fileStr);
         Map<String, String> passport = new HashMap<>();
-        for (String line: data){
+        for (String line: input){
             if (line != null && !line.isEmpty()){
                 String[] parts = line.split(" ");
                 for (String s : parts) {
@@ -33,7 +25,27 @@ public class day4 {
             }
         }
         passports.add(passport);
+    }
 
+    public int part1() {
+        int validPassports = 0, NoFields = 0;
+        String[] reqFields = "byr,iyr,eyr,hgt,hcl,ecl,pid".split(",");
+        for(Map<String, String> passportData : passports){
+            NoFields = 0;
+            for (String field: reqFields) {
+                String result = passportData.get(field);
+                if (result != null){
+                    NoFields++;
+                }
+            }
+            if (NoFields == 7){
+                validPassports++;
+            }
+        }
+        return validPassports;
+    }
+
+    public int part2() {
         int validPassports = 0;
         String[] reqFields = "byr,iyr,eyr,hgt,hcl,ecl,pid".split(",");
         for (Map<String, String> passportData : passports) {
@@ -80,6 +92,6 @@ public class day4 {
                 validPassports++;
             }
         }
-        System.out.println("Number of valid passports: " + validPassports);
+        return validPassports;
     }
 }
