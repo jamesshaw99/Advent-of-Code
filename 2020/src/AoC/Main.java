@@ -34,6 +34,8 @@ public class Main {
         TableVals.add(Arrays.asList("Day 8: Handheld Halting", Integer.toString(day8.part1()), Integer.toString(day8.part2())));
         day9 day9 = new day9("inputs/day9.txt");
         TableVals.add(Arrays.asList("Day 9: Encoding Error", Long.toString(day9.part1()), Long.toString(day9.part2())));
+        day10 day10 = new day10("inputs/day10.txt");
+        TableVals.add(Arrays.asList("Day 10: Adapter Array", Integer.toString(day10.part1()), Long.toString(day10.part2())));
 
         String[] headers = { "Day", "Part 1", "Part 2"};
         String[][] data = new String[TableVals.size()][];
