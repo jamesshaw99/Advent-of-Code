@@ -7,15 +7,14 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class day10 extends Day {
-    private List<Integer> adapters = new ArrayList<>();
-    private final int deviceJoltage;
-    private int combinationCount = 0;
+    private final List<Integer> adapters = new ArrayList<>();
+
     public day10(String fileStr) {
         super(fileStr);
         for(String s: input) adapters.add(Integer.valueOf(s));
         adapters.add(0);
         Collections.sort(adapters);
-        deviceJoltage = Collections.max(adapters) + 3;
+        int deviceJoltage = Collections.max(adapters) + 3;
         adapters.add(deviceJoltage);
     }
 
@@ -33,13 +32,12 @@ public class day10 extends Day {
     }
 
     public Long part2() {
-        int start = 0, end = deviceJoltage;
-        Map<Integer, Adapter> adapterMap = adapters.stream().map(num -> new Adapter(num)).collect(Collectors.toMap(adapter -> adapter.jolts, adapter -> adapter));
+        Map<Integer, Adapter> adapterMap = adapters.stream().map(Adapter::new).collect(Collectors.toMap(adapter -> adapter.jolts, adapter -> adapter));
         adapterMap.values().forEach(adapter -> adapter.setPossibleConnections(adapterMap));
         return adapterMap.get(0).getNumPossibilities();
     }
 
-    private class Adapter {
+    private static class Adapter {
         List<Adapter> possibleConnections = new ArrayList<>();
         Integer jolts;
         Long permutations;
@@ -63,7 +61,7 @@ public class day10 extends Day {
             permutations = possibleConnections.stream().mapToLong(Adapter::getNumPossibilities).sum();
 
             if(possibleConnections.isEmpty()) {
-                permutations = 1l;
+                permutations = 1L;
             }
 
             return permutations;

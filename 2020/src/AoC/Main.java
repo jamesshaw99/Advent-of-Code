@@ -8,11 +8,11 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Main {
-    public static final String ANSI_CYAN = "\u001B[36m";
+    public static final String ANSI_RED = "\u001b[31m";
     public static final String ANSI_RESET = "\u001B[0m";
 
     public static void main(String[] args) {
-        System.out.println("\u001b[30mA\u001b[31md\u001b[32mv\u001b[33me\u001b[34mn\u001b[35mt \u001b[36mO\u001b[37mf \u001b[30mC\u001b[31mo\u001b[32md\u001b[33me\u001b[0m");
+        System.out.println("\uD83C\uDF84 \u001b[30mA\u001b[31md\u001b[32mv\u001b[33me\u001b[34mn\u001b[35mt \u001b[36mO\u001b[37mf \u001b[30mC\u001b[31mo\u001b[32md\u001b[33me\u001b[0m \uD83C\uDF84");
 
         List<List<String>> TableVals = new ArrayList<>();
 
@@ -23,7 +23,7 @@ public class Main {
         day3 day3 = new day3("inputs/day3.txt");
         TableVals.add(Arrays.asList("Day 3: Toboggan Trajectory", Integer.toString(day3.part1()), Long.toString(day3.part2())));
         day4 day4 = new day4("inputs/day4.txt");
-        TableVals.add(Arrays.asList("[33mDay 4: Passport Processing", Integer.toString(day4.part1()), Integer.toString(day4.part2())));
+        TableVals.add(Arrays.asList("Day 4: Passport Processing", Integer.toString(day4.part1()), Integer.toString(day4.part2())));
         day5 day5 = new day5("inputs/day5.txt");
         TableVals.add(Arrays.asList("Day 5: Binary Boarding", Integer.toString(day5.part1()), Integer.toString(day5.part2())));
         day6 day6 = new day6("inputs/day6.txt");
@@ -43,6 +43,6 @@ public class Main {
             List<String> row = TableVals.get(i);
             data[i] = row.toArray(new String[0]);
         }
-        System.out.println(ANSI_CYAN + FlipTable.of(headers, data) + ANSI_RESET);
+        System.out.println(ANSI_RED + FlipTable.of(headers, data) + ANSI_RESET);
     }
 }
