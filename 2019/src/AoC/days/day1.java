@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class day1 extends Day {
-    private List<Integer> list = new ArrayList<>();
+    private final List<Integer> list = new ArrayList<>();
 
     public day1(String fileStr) {
         super(fileStr);

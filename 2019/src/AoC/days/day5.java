@@ -3,9 +3,6 @@ package AoC.days;
 import AoC.Day;
 import AoC.intcode.ProgramExecutor;
 
-import java.io.*;
-import java.util.Scanner;
-
 public class day5 extends Day {
     public String text;
     public day5(String fileStr) {

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class day9 extends Day {
-    private List<Long> data = new ArrayList<>();
+    private final List<Long> data = new ArrayList<>();
     public day9(String fileStr) {
         super(fileStr);
         for(String s: input) data.add(Long.valueOf(s));

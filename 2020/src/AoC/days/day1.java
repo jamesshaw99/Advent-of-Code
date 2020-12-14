@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class day1 extends Day {
-    private static List<Integer> intList = new ArrayList<>();
+    private static final List<Integer> intList = new ArrayList<>();
 
     public day1(String file) {
         super(file);

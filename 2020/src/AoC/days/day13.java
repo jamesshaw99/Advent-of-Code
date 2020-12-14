@@ -5,8 +5,8 @@ import AoC.Day;
 import java.util.*;
 
 public class day13 extends Day {
-    private int earliestTimestamp;
-    private List<String> busIDs;
+    private final int earliestTimestamp;
+    private final List<String> busIDs;
     public day13(String fileStr) {
         super(fileStr);
         earliestTimestamp = Integer.parseInt(input.get(0));
@@ -17,7 +17,7 @@ public class day13 extends Day {
         int busID = 0, busTime = 0;
         for(String bus: busIDs){
             if (!bus.equals("x")){
-                int busVal = Integer.parseInt(bus), busTimeTemp = busVal * ((earliestTimestamp-1) / busVal +1);;
+                int busVal = Integer.parseInt(bus), busTimeTemp = busVal * ((earliestTimestamp-1) / busVal +1);
                 if (busTime == 0 || busTimeTemp < busTime) {
                     busTime = busTimeTemp;
                     busID = busVal;

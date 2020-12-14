@@ -2,10 +2,6 @@ package AoC.days;
 
 import AoC.Day;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,16 +18,15 @@ public class day8 extends Day {
     }
 
     public int part2() {
-        int x = 0;
         while(result.msg.equals("INFINITE")){
             List<String> newInstructions = new ArrayList<>(input);
             for (int i = 0; i < newInstructions.size(); i++) {
                 String op = newInstructions.get(i).substring(0, 3);
                 int arg = Integer.parseInt(newInstructions.get(i).substring(4));
                 if (op.equals("jmp")){
-                    newInstructions.set(i, "nop " + Integer.toString(arg));
+                    newInstructions.set(i, "nop " + arg);
                 } else if(op.equals("nop")){
-                    newInstructions.set(i, "jmp " + Integer.toString(arg));
+                    newInstructions.set(i, "jmp " + arg);
                 }
                 result = run(newInstructions);
                 if (result.msg.equals("SUCCESS")){
@@ -44,11 +39,11 @@ public class day8 extends Day {
         return result.acc;
     }
 
-    public static Pair<String, Integer> run(List<String> instructions) {
+    public static Pair run(List<String> instructions) {
         int accumulator = 0,
                 i = 0;
         List<Integer> seenI = new ArrayList<>();
-        Pair<String, Integer> result;
+        Pair result;
 
         while(i < instructions.size()){
             seenI.add(i);

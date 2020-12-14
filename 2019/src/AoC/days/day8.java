@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class day8 extends Day {
-    private String pixels;
+    private final String pixels;
     private final int layerHeight = 6, layerWidth = 25, pixelsInlayer = layerHeight * layerWidth;
     public day8(String fileStr) {
         super(fileStr);
@@ -49,23 +49,23 @@ public class day8 extends Day {
             }
         }
 
-        String output = "";
+        StringBuilder output = new StringBuilder();
         for(int x = 0; x < layerHeight ; x++) {
             for(int y = 0; y < layerWidth; y++) {
                 int currentPixel = image.get(x * layerWidth + y);
                 if( currentPixel == 0) {
-                    output += "  ";
+                    output.append("  ");
                 } else if(currentPixel == 1) {
-                    output += "[]";
+                    output.append("[]");
                 } else {
-                    output += "  \n";
+                    output.append("  \n");
                 }
             }
-            output += "\n";
+            output.append("\n");
         }
 
         // DON'T FORGET TO ADD THE ANSWER
-        return output;
+        return output.toString();
     }
 
 }

@@ -3,14 +3,9 @@ package AoC.days;
 import AoC.Day;
 import AoC.intcode.ProgramExecutor;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class day2 extends Day {
-    private String text;
-    private List<Integer> dataList = new ArrayList<>();
-    private List<Integer> list = new ArrayList<>();
-    private List<Integer> list2 = new ArrayList<>();
+    private final String text;
+
     public day2(String fileStr) {
         super(fileStr);
         text = input.get(0);

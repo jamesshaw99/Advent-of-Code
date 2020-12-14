@@ -1,13 +1,12 @@
 package AoC.days;
 
-import java.io.*;
 import java.util.*;
 
 import AoC.Day;
 import AoC.intcode.ProgramExecutor;
 
 public class day7 extends Day {
-    private String text;
+    private final String text;
     public day7(String fileStr) {
         super(fileStr);
         text = input.get(0);
@@ -51,15 +50,13 @@ public class day7 extends Day {
                 maxValue = lastOutput;
             }
         }
-        //ProgramExecutor computer2 = new ProgramExecutor(text, true, true);
-        //computer2.run();
         return maxValue;
     }
 
     private <E> List<List<E>> generatePerm(List<E> original) {
         if (original.isEmpty()) {
             List<List<E>> result = new ArrayList<>();
-            result.add(new ArrayList<E>());
+            result.add(new ArrayList<>());
             return result;
         }
         E firstElement = original.remove(0);

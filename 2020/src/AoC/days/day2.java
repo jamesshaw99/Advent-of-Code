@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class day2 extends Day {
-    private static List<List<String>> lines = new ArrayList<>();
+    private static final List<List<String>> lines = new ArrayList<>();
 
     public day2(String fileStr) {
         super(fileStr);

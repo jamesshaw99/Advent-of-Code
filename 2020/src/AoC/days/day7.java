@@ -6,8 +6,8 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class day7 extends Day {
-    private Map<String, List<String>> targetToContents = new HashMap<>();
-    private List<String> bags = new ArrayList<>();
+    private final Map<String, List<String>> targetToContents = new HashMap<>();
+    private final List<String> bags = new ArrayList<>();
 
     public day7(String fileStr) {
         super(fileStr);
@@ -44,8 +44,7 @@ public class day7 extends Day {
 
     public Map<String, Integer> getBagContents(Map<String, List<String>> contentMap, String bag, boolean getValue) {
         Map<String, Integer> uniqueBags = new HashMap<>();
-        Map<String, Integer> result = getBagContents(contentMap, bag, uniqueBags, getValue);
-        return result;
+        return getBagContents(contentMap, bag, uniqueBags, getValue);
     }
 
     public Map<String, Integer> getBagContents(Map<String, List<String>> contentMap, String bag, Map<String, Integer> uniqueBags, boolean getValue) {

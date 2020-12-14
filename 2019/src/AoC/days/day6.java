@@ -2,11 +2,10 @@ package AoC.days;
 
 import AoC.Day;
 
-import java.io.*;
 import java.util.*;
 
 public class day6 extends Day {
-    private Map<String, Node> orbitsMap = new HashMap<>();
+    private final Map<String, Node> orbitsMap = new HashMap<>();
 
     public day6(String fileStr) {
         super(fileStr);
@@ -29,8 +28,7 @@ public class day6 extends Day {
 
     public int part2() {
         Node common = findCommonParent(orbitsMap.get("YOU"), orbitsMap.get("SAN"));
-        int distance = (orbitsMap.get("YOU").getDepth() - common.getDepth()) + (orbitsMap.get("SAN").getDepth() - common.getDepth()) - 2;
-        return distance;
+        return (orbitsMap.get("YOU").getDepth() - common.getDepth()) + (orbitsMap.get("SAN").getDepth() - common.getDepth()) - 2;
     }
 
     public static Node findOrMakeNode(Map<String, Node> map, String name){

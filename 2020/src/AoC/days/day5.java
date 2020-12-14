@@ -2,13 +2,12 @@ package AoC.days;
 
 import AoC.Day;
 
-import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class day5 extends Day {
-    private List<Integer> SeatIDs = new ArrayList<>();
+    private final List<Integer> SeatIDs = new ArrayList<>();
     public day5(String fileStr) {
         super(fileStr);
         for (String line: input) {

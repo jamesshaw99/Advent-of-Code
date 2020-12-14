@@ -7,7 +7,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class day4 extends Day {
-    private List<Map<String, String>> passports = new ArrayList<>();
+    private final List<Map<String, String>> passports = new ArrayList<>();
 
     public day4(String fileStr) {
         super(fileStr);
@@ -28,7 +28,7 @@ public class day4 extends Day {
     }
 
     public int part1() {
-        int validPassports = 0, NoFields = 0;
+        int validPassports = 0, NoFields;
         String[] reqFields = "byr,iyr,eyr,hgt,hcl,ecl,pid".split(",");
         for(Map<String, String> passportData : passports){
             NoFields = 0;

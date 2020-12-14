@@ -2,12 +2,10 @@ package AoC.days;
 
 import AoC.Day;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.*;
 
 public class day3 extends Day {
-    private List<List<String>> lines = new ArrayList<>();
+    private final List<List<String>> lines = new ArrayList<>();
     private int closestDistance = Integer.MAX_VALUE;
     private int shortestWire = Integer.MAX_VALUE;
 

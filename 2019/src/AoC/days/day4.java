@@ -3,7 +3,8 @@ package AoC.days;
 import AoC.Day;
 
 public class day4 extends Day {
-    private int min, max;
+    private final int min;
+    private final int max;
     public day4(String fileStr) {
         super(fileStr);
         min = Integer.parseInt(input.get(0).substring(0, input.get(0).indexOf('-')));
