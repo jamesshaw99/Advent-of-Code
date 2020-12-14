@@ -39,7 +39,9 @@ public class Main {
         day11 day11 = new day11("inputs/day11.txt");
         TableVals.add(Arrays.asList("Day 11: Seating System", Integer.toString(day11.part1()), Long.toString(day11.part2())));
         day12 day12 = new day12("inputs/day12.txt");
-        TableVals.add(Arrays.asList("Day 12: Seating System", Integer.toString(day12.part1()), Long.toString(day12.part2())));
+        TableVals.add(Arrays.asList("Day 12: Rain Risk", Integer.toString(day12.part1()), Long.toString(day12.part2())));
+        day13 day13 = new day13("inputs/day13.txt");
+        TableVals.add(Arrays.asList("Day 13: Shuttle Search", Integer.toString(day13.part1()), Long.toString(day13.part2())));
 
         String[] headers = { "Day", "Part 1", "Part 2"};
         String[][] data = new String[TableVals.size()][];
