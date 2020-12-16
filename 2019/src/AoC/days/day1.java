@@ -13,15 +13,15 @@ public class day1 extends Day {
         for(String s: input) list.add(Integer.valueOf(s));
     }
 
-    public long part1() {
+    public String part1() {
         long totalFuel = 0;
         for (Integer integer : list) {
             totalFuel += (Math.floor(integer / 3.0) - 2);
         }
-        return totalFuel;
+        return "Total fuel: " + totalFuel;
     }
 
-    public long part2() {
+    public String part2() {
         long totalFuel = 0;
         for (Integer integer : list) {
             int reqFuel = ((int) Math.floor(integer / 3.0) - 2);
@@ -30,6 +30,6 @@ public class day1 extends Day {
                 reqFuel = ((int) Math.floor(reqFuel / 3.0) - 2);
             }
         }
-        return totalFuel;
+        return "Total fuel: " + totalFuel;
     }
 }

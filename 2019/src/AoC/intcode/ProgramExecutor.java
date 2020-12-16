@@ -27,7 +27,7 @@ public class ProgramExecutor {
         io = new IO(this, consoleInput, consoleOutput);
     }
 
-    public void run() throws Exception {
+    public String run() throws Exception {
         paused = false;
 
         while (!finished && !paused) {
@@ -35,6 +35,7 @@ public class ProgramExecutor {
             Opcode opcode = info.getOpcodeObject();
             opcode.run(this);
         }
+        return "FINISHED";
     }
 
     public void reset() {

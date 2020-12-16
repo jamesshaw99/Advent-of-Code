@@ -18,7 +18,7 @@ public class Main {
 
         day1 day1 = new day1("inputs/day1.txt");
         long startTime = System.nanoTime();
-        TableVals.add(Arrays.asList("Day 1: The Tyranny of the Rocket Equation", Long.toString(day1.part1()), Long.toString(day1.part2()),""));
+        TableVals.add(Arrays.asList("Day 1: The Tyranny of the Rocket Equation", day1.part1(), day1.part2(),""));
         long endTime = System.nanoTime();
         long duration = (endTime - startTime);
         TableVals.get(0).set(3, Double.toString(duration/ 1000000.0));
@@ -60,7 +60,7 @@ public class Main {
 
         day7 day7 = new day7("inputs/day7.txt");
         startTime = System.nanoTime();
-        TableVals.add(Arrays.asList("Day 7: Universal Orbit Map", Long.toString(day7.part1()), day7.part2() + " <- rage quit (╯°□°）╯︵ ┻━┻ ", ""));
+        TableVals.add(Arrays.asList("Day 7: Universal Orbit Map", Long.toString(day7.part1()), Long.toString(day7.part2()), ""));
         endTime = System.nanoTime();
         duration = (endTime - startTime);
         TableVals.get(6).set(3,Double.toString(duration/ 1000000.0));
@@ -71,6 +71,34 @@ public class Main {
         endTime = System.nanoTime();
         duration = (endTime - startTime);
         TableVals.get(7).set(3,Double.toString(duration/ 1000000.0));
+
+        day9 day9 = new day9("inputs/day9.txt");
+        startTime = System.nanoTime();
+        TableVals.add(Arrays.asList("Day 9: Sensor Boost", Long.toString(day9.part1()), Long.toString(day9.part2()),""));
+        endTime = System.nanoTime();
+        duration = (endTime - startTime);
+        TableVals.get(8).set(3,Double.toString(duration/ 1000000.0));
+
+        day10 day10 = new day10("inputs/day10.txt");
+        startTime = System.nanoTime();
+        TableVals.add(Arrays.asList("Day 10: Monitoring Station", Long.toString(day10.part1()), Long.toString(day10.part2()),""));
+        endTime = System.nanoTime();
+        duration = (endTime - startTime);
+        TableVals.get(9).set(3,Double.toString(duration/ 1000000.0));
+
+        day11 day11 = new day11("inputs/day11.txt");
+        startTime = System.nanoTime();
+        TableVals.add(Arrays.asList("Day 11: Space Police", day11.part1(), day11.part2(),""));
+        endTime = System.nanoTime();
+        duration = (endTime - startTime);
+        TableVals.get(10).set(3,Double.toString(duration/ 1100000.0));
+
+        day12 day12 = new day12("inputs/day12.txt");
+        startTime = System.nanoTime();
+        TableVals.add(Arrays.asList("Day 12: The N-Body Problem", day12.part1(), day12.part2(),""));
+        endTime = System.nanoTime();
+        duration = (endTime - startTime);
+        TableVals.get(11).set(3,Double.toString(duration/ 1200000.0));
 
 
         String[] headers = { "Day", "Part 1", "Part 2", "Total Duration (ms)"};
