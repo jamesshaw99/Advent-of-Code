@@ -7,7 +7,7 @@ import AoC.intcode.ProgramExecutor;
 
 public class Opcode3 extends Opcode {
     @Override
-    public void run(ProgramExecutor executor) {
+    public void run(ProgramExecutor executor) throws InterruptedException {
         int rawCode = (int) executor.getAtPointerAndIncrement();
         long argument = executor.getAtPointerAndIncrement();
         ParameterMode mode = ParameterMode.modesFromRaw(rawCode).get(0);

@@ -3,7 +3,6 @@ package AoC.days;
 import AoC.Day;
 import AoC.LinkedNonBlockingQueue;
 
-import java.util.Collections;
 import java.util.HashMap;
 
 import static java.util.Collections.singletonList;

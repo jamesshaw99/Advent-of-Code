@@ -23,4 +23,12 @@ public class Day {
             e.printStackTrace();
         }
     }
+
+    public String part1() throws Exception {
+        return "Not completed yet";
+    }
+
+    public String part2() throws Exception {
+        return "Not completed yet";
+    }
 }

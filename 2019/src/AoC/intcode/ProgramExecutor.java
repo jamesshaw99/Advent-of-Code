@@ -11,20 +11,28 @@ public class ProgramExecutor {
     private boolean finished = false;
     private boolean paused;
 
+
     public ProgramExecutor(List<Long> program, boolean consoleInput, boolean consoleOutput) {
+        this(program, consoleInput, consoleOutput, false);
+    }
+    public ProgramExecutor(List<Long> program, boolean consoleInput, boolean consoleOutput, boolean gameMode) {
         for (int i = 0; i < program.size(); i++) {
             memory.put((long) i, program.get(i));
         }
-        io = new IO(this, consoleInput, consoleOutput);
+        io = new IO(this, consoleInput, consoleOutput, gameMode);
     }
 
     public ProgramExecutor(String program, boolean consoleInput, boolean consoleOutput) {
+        this(program, consoleInput, consoleOutput, false);
+    }
+
+    public ProgramExecutor(String program, boolean consoleInput, boolean consoleOutput, boolean gameMode) {
         List<Long> list = Arrays.stream(program.split(",")).mapToLong(s -> Long.parseLong(s.trim())).boxed().collect(Collectors.toCollection(ArrayList::new));
 
         for (int i = 0; i < list.size(); i++) {
             memory.put((long) i, list.get(i));
         }
-        io = new IO(this, consoleInput, consoleOutput);
+        io = new IO(this, consoleInput, consoleOutput, gameMode);
     }
 
     public String run() throws Exception {

@@ -18,17 +18,17 @@ public class day6 extends Day {
         }
     }
 
-    public int part1() {
+    public String part1() {
         int totalOrbits = 0;
         for (String key : orbitsMap.keySet()) {
             totalOrbits += orbitsMap.get(key).getDepth();
         }
-        return totalOrbits;
+        return Integer.toString(totalOrbits);
     }
 
-    public int part2() {
+    public String part2() {
         Node common = findCommonParent(orbitsMap.get("YOU"), orbitsMap.get("SAN"));
-        return (orbitsMap.get("YOU").getDepth() - common.getDepth()) + (orbitsMap.get("SAN").getDepth() - common.getDepth()) - 2;
+        return Integer.toString((orbitsMap.get("YOU").getDepth() - common.getDepth()) + (orbitsMap.get("SAN").getDepth() - common.getDepth()) - 2);
     }
 
     public static Node findOrMakeNode(Map<String, Node> map, String name){

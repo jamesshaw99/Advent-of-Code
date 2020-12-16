@@ -10,6 +10,7 @@ import static java.util.stream.Collectors.toList;
 
 public class day12 extends Day {
     List<Moon> moons = new ArrayList<>();
+    List<Moon> moonsStart;
     public day12(String fileStr) {
         super(fileStr);
         for (String coordinates: input) {
@@ -19,46 +20,17 @@ public class day12 extends Day {
             }
             moons.add(new Moon(rawCoor[0], rawCoor[1],rawCoor[2]));
         }
+        moonsStart = moons.stream().map(Moon::new).collect(toList());
     }
 
     public String part1() {
         int steps = 1000;
 
-        List<Moon> moons1 = moons.stream().map(Moon::new).collect(toList());
-
         for (int s = 0; s < steps; s++) {
-
-            for (int i = 0; i < moons1.size(); i++) {
-                for (int j = 0; j < moons1.size(); j++) {
-                    if (i != j) {
-                        int x = 0, y = 0, z = 0;
-                        Moon moon1 = moons1.get(i), moon2 = moons1.get(j);
-                        if (moon1.posX < moon2.posX) {
-                            x++;
-                        } else if (moon1.posX > moon2.posX) {
-                            x--;
-                        }
-                        if (moon1.posY < moon2.posY) {
-                            y++;
-                        } else if (moon1.posY > moon2.posY) {
-                            y--;
-                        }
-                        if (moon1.posZ < moon2.posZ) {
-                            z++;
-                        } else if (moon1.posZ > moon2.posZ) {
-                            z--;
-                        }
-
-                        moon1.changeVel(x, y, z);
-                    }
-                }
-            }
-            for (Moon moon : moons1) {
-                moon.move();
-            }
+            step();
         }
         int sum = 0;
-        for (Moon moon : moons1) {
+        for (Moon moon : moons) {
             int pot = Math.abs(moon.posX) + Math.abs(moon.posY) + Math.abs(moon.posZ);
             int kin = Math.abs(moon.velX) + Math.abs(moon.velY) + Math.abs(moon.velZ);
             sum += pot*kin;
@@ -68,50 +40,94 @@ public class day12 extends Day {
     }
 
     public String part2() {
-        boolean complete = false;
-        List<Moon> moonsStart = moons.stream().map(Moon::new).collect(toList());
 
-        long steps = 0;
-        while(!complete) {
-            for (int i = 0; i < moons.size(); i++) {
-                for (int j = 0; j < moons.size(); j++) {
-                    if (i != j) {
-                        int x = 0, y = 0, z = 0;
-                        Moon moon1 = moons.get(i), moon2 = moons.get(j);
-                        if (moon1.posX < moon2.posX) {
-                            x++;
-                        } else if (moon1.posX > moon2.posX) {
-                            x--;
-                        }
-                        if (moon1.posY < moon2.posY) {
-                            y++;
-                        } else if (moon1.posY > moon2.posY) {
-                            y--;
-                        }
-                        if (moon1.posZ < moon2.posZ) {
-                            z++;
-                        } else if (moon1.posZ > moon2.posZ) {
-                            z--;
-                        }
-
-                        moon1.changeVel(x, y, z);
-                    }
-                }
-            }
-
-            for (Moon moon : moons) {
-                moon.move();
-            }
+        int steps = 1000;
+        int x = 0, y = 0, z = 0;
+        while(x == 0 || y == 0 || z == 0) {
+            step();
             steps++;
-
-            if (moons.get(0).posX == moonsStart.get(0).posX && moons.get(0).posY == moonsStart.get(0).posY && moons.get(0).posZ == moonsStart.get(0).posZ &&
-                    moons.get(1).posX == moonsStart.get(1).posX && moons.get(1).posY == moonsStart.get(1).posY && moons.get(1).posZ == moonsStart.get(1).posZ &&
-                    moons.get(2).posX == moonsStart.get(2).posX && moons.get(2).posY == moonsStart.get(2).posY && moons.get(2).posZ == moonsStart.get(2).posZ &&
-                    moons.get(3).posX == moonsStart.get(3).posX && moons.get(3).posY == moonsStart.get(3).posY && moons.get(3).posZ == moonsStart.get(3).posZ) {
-                complete = true;
+            if(x == 0 && isEqual('x')){
+                x = steps;
+            } else if (y == 0 && isEqual('y')){
+                y = steps;
+            } else if (z == 0 && isEqual('z')){
+                z = steps;
             }
         }
-        return "Steps: " + steps;
+        return "Steps: " + lowestCommonMultiple(lowestCommonMultiple(x,y),z);
+    }
+
+    private long lowestCommonMultiple(long a, long b) {
+        return (a * b) / greatestCommonDenominator(a, b);
+    }
+
+    private long greatestCommonDenominator(long a, long b) {
+        if (a == 0){
+            return b;
+        } else {
+            return greatestCommonDenominator(b % a, a);
+        }
+    }
+
+    private boolean isEqual(char axis) {
+        for(int i = 0; i < moons.size(); i++) {
+            if (axis == 'x' && moons.get(i).posX != moonsStart.get(i).posX){
+                return false;
+            } else if (axis == 'y' && moons.get(i).posY != moonsStart.get(i).posY){
+                return false;
+            } else if (axis == 'z' && moons.get(i).posZ != moonsStart.get(i).posZ){
+                return false;
+            }
+        }
+
+        for (Moon moon: moons){
+            if(axis == 'x' && moon.velX != 0){
+                return false;
+            } else if (axis == 'y' && moon.velY != 0) {
+                return false;
+            } else if (axis == 'z' && moon.velZ != 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private void step() {
+        for (int i = 0; i < moons.size(); i++) {
+            Moon moon1 = moons.get(i);
+            for (int j = i+1; j < moons.size(); j++) {
+                int x1 = 0, y1 = 0, z1 = 0,
+                        x2 = 0, y2 = 0, z2 = 0;
+                Moon moon2 = moons.get(j);
+                if (moon1.posX < moon2.posX) {
+                    x1++;
+                    x2--;
+                } else if (moon1.posX > moon2.posX) {
+                    x1--;
+                    x2++;
+                }
+                if (moon1.posY < moon2.posY) {
+                    y1++;
+                    y2--;
+                } else if (moon1.posY > moon2.posY) {
+                    y1--;
+                    y2++;
+                }
+                if (moon1.posZ < moon2.posZ) {
+                    z1++;
+                    z2--;
+                } else if (moon1.posZ > moon2.posZ) {
+                    z1--;
+                    z2++;
+                }
+
+                moon1.changeVel(x1, y1, z1);
+                moon2.changeVel(x2, y2, z2);
+            }
+        }
+        for (Moon moon : moons) {
+            moon.move();
+        }
     }
 
     private class Moon {
@@ -139,6 +155,15 @@ public class day12 extends Day {
             posX += velX;
             posY += velY;
             posZ += velZ;
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if(!(obj instanceof Moon)){
+                return false;
+            }
+            Moon moon = (Moon) obj;
+            return moon.posX == posX && moon.posY == posY && moon.posZ == posZ;
         }
     }
 }

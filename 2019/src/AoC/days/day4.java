@@ -51,7 +51,7 @@ public class day4 extends Day {
         return false;
     }
 
-    public int part1() {
+    public String part1() {
         int count = 0;
         for (int i = min; i <= max; i++) {
             String value = Integer.toString(i);
@@ -60,10 +60,10 @@ public class day4 extends Day {
             }
         }
 
-        return count;
+        return Integer.toString(count);
     }
 
-    public int part2() {
+    public String part2() {
         int count = 0;
         for (int i = min; i <= max; i++){
             String value = Integer.toString(i);
@@ -72,6 +72,6 @@ public class day4 extends Day {
             }
         }
 
-        return count;
+        return Integer.toString(count);
     }
 }

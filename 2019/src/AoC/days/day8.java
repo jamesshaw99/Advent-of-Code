@@ -14,7 +14,7 @@ public class day8 extends Day {
         pixels = input.get(0);
     }
 
-    public long part1() {
+    public String part1() {
         List<String> layers = new ArrayList<>();
         for(int i = 0; i <= pixels.length()-150; i += pixelsInlayer) {
             layers.add(pixels.substring(i, i + pixelsInlayer));
@@ -31,7 +31,7 @@ public class day8 extends Day {
         Map<String, Long> collect = Arrays.stream(String.valueOf(layerMap.get(min.get())).split(""))
                 .collect(
                         Collectors.groupingBy(string -> string, Collectors.counting()));
-        return collect.get("1") * collect.get("2");
+        return Long.toString(collect.get("1") * collect.get("2"));
     }
 
     public String part2() {

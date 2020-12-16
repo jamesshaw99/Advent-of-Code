@@ -14,16 +14,16 @@ public class day7 extends Day {
         text = input.get(0);
     }
 
-    public long part1() throws Exception {
+    public String part1() throws Exception {
         phases = new ArrayList<>(Arrays.asList(0,1,2,3,4));
         listOfPossiblePhases = createAllPermutationsOf(phases);
-        return run(false).stream().reduce(Integer::max).get();
+        return Long.toString(run(false).stream().reduce(Integer::max).get());
     }
 
-    public long part2() throws Exception {
+    public String part2() throws Exception {
         phases = new ArrayList<>(Arrays.asList(5,6,7,8,9));
         listOfPossiblePhases = createAllPermutationsOf(phases);
-        return run(true).stream().reduce(Integer::max).get();
+        return Long.toString(run(true).stream().reduce(Integer::max).get());
     }
 
     public List<Integer> run(boolean feedbackMode) {

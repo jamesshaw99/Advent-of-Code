@@ -11,14 +11,14 @@ public class day2 extends Day {
         text = input.get(0);
     }
 
-    public long part1() throws Exception {
+    public String part1() throws Exception {
         ProgramExecutor computer = new ProgramExecutor(text, false, false);
         computer.run();
         computer.setMemoryPointer(0);
-        return computer.getAtPointer();
+        return Long.toString(computer.getAtPointer());
     }
 
-    public int part2() throws Exception {
+    public String part2() throws Exception {
         for (int k = 0; k < 100; k++){
             for (int j = 0; j < 100; j++){
                 ProgramExecutor computer = new ProgramExecutor(text, false, false);
@@ -27,10 +27,10 @@ public class day2 extends Day {
                 computer.run();
                 computer.setMemoryPointer(0);
                 if(computer.getAtPointer() == 19690720) {
-                    return (k * 100 + j);
+                    return Integer.toString(k * 100 + j);
                 }
             }
         }
-        return 0;
+        return "0";
     }
 }

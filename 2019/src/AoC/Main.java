@@ -25,63 +25,63 @@ public class Main {
 
         day2 day2 = new day2("inputs/day2.txt");
         startTime = System.nanoTime();
-        TableVals.add(Arrays.asList("Day 2: 1202 Program Alarm", Long.toString(day2.part1()), Integer.toString(day2.part2()),""));
+        TableVals.add(Arrays.asList("Day 2: 1202 Program Alarm", day2.part1(), day2.part2(),""));
         endTime = System.nanoTime();
         duration = (endTime - startTime);
         TableVals.get(1).set(3,Double.toString(duration/ 1000000.0));
 
         day3 day3 = new day3("inputs/day3.txt");
         startTime = System.nanoTime();
-        TableVals.add(Arrays.asList("Day 3: Crossed Wires", Integer.toString(day3.part1()), Integer.toString(day3.part2()),""));
+        TableVals.add(Arrays.asList("Day 3: Crossed Wires", day3.part1(), day3.part2(),""));
         endTime = System.nanoTime();
         duration = (endTime - startTime);
         TableVals.get(2).set(3,Double.toString(duration/ 1000000.0));
 
         day4 day4 = new day4("inputs/day4.txt");
         startTime = System.nanoTime();
-        TableVals.add(Arrays.asList("Day 4: Secure Container", Integer.toString(day4.part1()), Integer.toString(day4.part2()),""));
+        TableVals.add(Arrays.asList("Day 4: Secure Container", day4.part1(), day4.part2(),""));
         endTime = System.nanoTime();
         duration = (endTime - startTime);
         TableVals.get(3).set(3,Double.toString(duration/ 1000000.0));
 
         day5 day5 = new day5("inputs/day5.txt");
         startTime = System.nanoTime();
-        TableVals.add(Arrays.asList("Day 5: Sunny with a Chance of Asteroids", Long.toString(day5.part1()), Long.toString(day5.part2()),""));
+        TableVals.add(Arrays.asList("Day 5: Sunny with a Chance of Asteroids", day5.part1(), day5.part2(),""));
         endTime = System.nanoTime();
         duration = (endTime - startTime);
         TableVals.get(4).set(3,Double.toString(duration/ 1000000.0));
 
         day6 day6 = new day6("inputs/day6.txt");
         startTime = System.nanoTime();
-        TableVals.add(Arrays.asList("Day 6: Universal Orbit Map", Long.toString(day6.part1()), Long.toString(day6.part2()),""));
+        TableVals.add(Arrays.asList("Day 6: Universal Orbit Map", day6.part1(), day6.part2(),""));
         endTime = System.nanoTime();
         duration = (endTime - startTime);
         TableVals.get(5).set(3,Double.toString(duration/ 1000000.0));
 
         day7 day7 = new day7("inputs/day7.txt");
         startTime = System.nanoTime();
-        TableVals.add(Arrays.asList("Day 7: Universal Orbit Map", Long.toString(day7.part1()), Long.toString(day7.part2()), ""));
+        TableVals.add(Arrays.asList("Day 7: Universal Orbit Map", day7.part1(), day7.part2(), ""));
         endTime = System.nanoTime();
         duration = (endTime - startTime);
         TableVals.get(6).set(3,Double.toString(duration/ 1000000.0));
 
         day8 day8 = new day8("inputs/day8.txt");
         startTime = System.nanoTime();
-        TableVals.add(Arrays.asList("Day 8: Space Image Format", Long.toString(day8.part1()), day8.part2(),""));
+        TableVals.add(Arrays.asList("Day 8: Space Image Format", day8.part1(), day8.part2(),""));
         endTime = System.nanoTime();
         duration = (endTime - startTime);
         TableVals.get(7).set(3,Double.toString(duration/ 1000000.0));
 
         day9 day9 = new day9("inputs/day9.txt");
         startTime = System.nanoTime();
-        TableVals.add(Arrays.asList("Day 9: Sensor Boost", Long.toString(day9.part1()), Long.toString(day9.part2()),""));
+        TableVals.add(Arrays.asList("Day 9: Sensor Boost", day9.part1(), day9.part2(), ""));
         endTime = System.nanoTime();
         duration = (endTime - startTime);
         TableVals.get(8).set(3,Double.toString(duration/ 1000000.0));
 
         day10 day10 = new day10("inputs/day10.txt");
         startTime = System.nanoTime();
-        TableVals.add(Arrays.asList("Day 10: Monitoring Station", Long.toString(day10.part1()), Long.toString(day10.part2()),""));
+        TableVals.add(Arrays.asList("Day 10: Monitoring Station", day10.part1(), day10.part2(),""));
         endTime = System.nanoTime();
         duration = (endTime - startTime);
         TableVals.get(9).set(3,Double.toString(duration/ 1000000.0));
@@ -99,6 +99,15 @@ public class Main {
         endTime = System.nanoTime();
         duration = (endTime - startTime);
         TableVals.get(11).set(3,Double.toString(duration/ 1200000.0));
+
+        day13 day13 = new day13("inputs/day13.txt");
+        startTime = System.nanoTime();
+        TableVals.add(Arrays.asList("Day 13: Care Package", day13.part1(), day13.part2(),""));
+        endTime = System.nanoTime();
+        duration = (endTime - startTime);
+        TableVals.get(12).set(3,Double.toString(duration/ 1300000.0));
+
+
 
 
         String[] headers = { "Day", "Part 1", "Part 2", "Total Duration (ms)"};

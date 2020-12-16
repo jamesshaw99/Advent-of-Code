@@ -31,7 +31,7 @@ public class day3 extends Day {
         return null;
     }
 
-    public int part1() {
+    public String part1() {
         Map<String, Integer> wire = new HashMap<>();
         String[] input = lines.get(0).toArray(new String[0]);
 
@@ -71,10 +71,10 @@ public class day3 extends Day {
             }
         }
 
-        return closestDistance;
+        return Integer.toString(closestDistance);
     }
 
-    public int part2(){
-        return shortestWire;
+    public String part2(){
+        return Integer.toString(shortestWire);
     }
 }

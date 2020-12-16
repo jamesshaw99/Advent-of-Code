@@ -16,7 +16,7 @@ public class day10 extends Day {
         initAsteroidsPositions();
     }
 
-    public long part1() {
+    public String part1() {
         long count = 0;
         for (Point point: asteroids){
             long visible = getVisibleAsteroidsCount(point);
@@ -24,10 +24,10 @@ public class day10 extends Day {
                 count = visible;
             }
         }
-        return count;
+        return Long.toString(count);
     }
 
-    public int part2() {
+    public String part2() {
         Point max = asteroids.stream().max(comparing(day10::getVisibleAsteroidsCount)).get();
         Map<Double, LinkedList<Point>> pointsByAngle = asteroids.stream().filter(not(max::equals)).sorted(comparing(max::manhattanDistance)).collect(groupingBy(max::getAngle, toCollection(LinkedList::new)));
         Double[] angles = pointsByAngle.keySet().stream().sorted().toArray(Double[]::new);
@@ -41,7 +41,7 @@ public class day10 extends Day {
         }
 
         Point Point200 = removedPoints.getLast();
-        return Point200.x*100 + Point200.y;
+        return Integer.toString(Point200.x*100 + Point200.y);
     }
 
     private static long getVisibleAsteroidsCount(Point point) {
