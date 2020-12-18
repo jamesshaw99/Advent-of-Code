@@ -3,6 +3,7 @@ package AoC;
 import AoC.days.*;
 import com.jakewharton.fliptables.FlipTable;
 
+import javax.script.ScriptException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -11,7 +12,7 @@ public class Main {
     public static final String ANSI_RED = "\u001b[31m";
     public static final String ANSI_RESET = "\u001B[0m";
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ScriptException {
         System.out.println("\uD83C\uDF84 \u001b[30mA\u001b[31md\u001b[32mv\u001b[33me\u001b[34mn\u001b[35mt \u001b[36mO\u001b[37mf \u001b[30mC\u001b[31mo\u001b[32md\u001b[33me\u001b[0m \uD83C\uDF84");
 
         List<List<String>> TableVals = new ArrayList<>();
@@ -128,6 +129,19 @@ public class Main {
         duration = (endTime - startTime);
         TableVals.get(15).set(3,Double.toString(duration/ 1200000.0));
 
+        day17 day17 = new day17("inputs/day17.txt");
+        startTime = System.nanoTime();
+        TableVals.add(Arrays.asList("Day 17: Conway Cubes", Long.toString(day17.part1()), Long.toString(day17.part2()),""));
+        endTime = System.nanoTime();
+        duration = (endTime - startTime);
+        TableVals.get(16).set(3,Double.toString(duration/ 1200000.0));
+
+        day18 day18 = new day18("inputs/day18.txt");
+        startTime = System.nanoTime();
+        TableVals.add(Arrays.asList("Day 18: Operation Order", Long.toString(Math.round(day18.part1())), Long.toString(Math.round(day18.part2())),""));
+        endTime = System.nanoTime();
+        duration = (endTime - startTime);
+        TableVals.get(17).set(3,Double.toString(duration/ 1200000.0));
 
         String[] headers = { "Day", "Part 1", "Part 2", "Duration (ms)"};
         String[][] data = new String[TableVals.size()][];
