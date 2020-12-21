@@ -44,11 +44,11 @@ public class day19 extends Day {
     }
 
     public long part2() {
-        rules.put(8, new Rule(new ArrayList<>(Collections.singletonList(42)), new ArrayList<>(Arrays.asList(42, 8))));
+        /*rules.put(8, new Rule(new ArrayList<>(Collections.singletonList(42)), new ArrayList<>(Arrays.asList(42, 8))));
         rules.put(11, new Rule(new ArrayList<>(Arrays.asList(42, 31)), new ArrayList<>(Arrays.asList(42, 11, 31))));
         Pattern regex2 = Pattern.compile(rules.get(0).getRegex(rules, -1, 0));
-        System.out.println(regex2.toString());
-        return sentences.parallelStream().filter(x -> regex2.matcher(x).matches()).count();
+        return sentences.parallelStream().filter(x -> regex2.matcher(x).matches()).count();*/
+        return 0;
     }
 
     public static class Rule {

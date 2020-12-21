@@ -3,7 +3,6 @@ package AoC;
 import AoC.days.*;
 import com.jakewharton.fliptables.FlipTable;
 
-import javax.script.ScriptException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -12,7 +11,7 @@ public class Main {
     public static final String ANSI_RED = "\u001b[31m";
     public static final String ANSI_RESET = "\u001B[0m";
 
-    public static void main(String[] args) throws ScriptException {
+    public static void main(String[] args) {
         System.out.println("\uD83C\uDF84 \u001b[30mA\u001b[31md\u001b[32mv\u001b[33me\u001b[34mn\u001b[35mt \u001b[36mO\u001b[37mf \u001b[30mC\u001b[31mo\u001b[32md\u001b[33me\u001b[0m \uD83C\uDF84");
 
         List<List<String>> TableVals = new ArrayList<>();
@@ -145,11 +144,26 @@ public class Main {
 
         day19 day19 = new day19("inputs/day19.txt");
         startTime = System.nanoTime();
-        TableVals.add(Arrays.asList("Day 19: Monster Messages", Long.toString(Math.round(day19.part1())), Long.toString(Math.round(day19.part2())),""));
+        TableVals.add(Arrays.asList("Day 19: Monster Messages", Long.toString(day19.part1()), Long.toString(day19.part2()),""));
         endTime = System.nanoTime();
         duration = (endTime - startTime);
         TableVals.get(18).set(3,Double.toString(duration/ 1200000.0));
 
+        day20 day20 = new day20("inputs/day20.txt");
+        startTime = System.nanoTime();
+        TableVals.add(Arrays.asList("Day 20: Jurassic Jigsaw", Long.toString(day20.part1()), Long.toString(day20.part2()),""));
+        endTime = System.nanoTime();
+        duration = (endTime - startTime);
+        TableVals.get(19).set(3,Double.toString(duration/ 1200000.0));
+
+        day21 day21 = new day21("inputs/day21.txt");
+        startTime = System.nanoTime();
+        TableVals.add(Arrays.asList("Day 21: Allergen Assessment", Long.toString(day21.part1()), day21.part2(),""));
+        endTime = System.nanoTime();
+        duration = (endTime - startTime);
+        TableVals.get(20).set(3,Double.toString(duration/ 1210000.0));
+
+        System.out.print("\n");
         String[] headers = { "Day", "Part 1", "Part 2", "Duration (ms)"};
         String[][] data = new String[TableVals.size()][];
         for (int i = 0; i < TableVals.size(); i++) {
