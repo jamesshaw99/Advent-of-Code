@@ -163,6 +163,13 @@ public class Main {
         duration = (endTime - startTime);
         TableVals.get(20).set(3,Double.toString(duration/ 1210000.0));
 
+        day22 day22 = new day22("inputs/day22.txt");
+        startTime = System.nanoTime();
+        TableVals.add(Arrays.asList("Day 22: Crab Combat", Long.toString(day22.part1(false)), Long.toString(day22.part2()),""));
+        endTime = System.nanoTime();
+        duration = (endTime - startTime);
+        TableVals.get(21).set(3,Double.toString(duration/ 1220000.0));
+
         System.out.print("\n");
         String[] headers = { "Day", "Part 1", "Part 2", "Duration (ms)"};
         String[][] data = new String[TableVals.size()][];
