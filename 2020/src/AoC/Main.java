@@ -165,10 +165,17 @@ public class Main {
 
         day22 day22 = new day22("inputs/day22.txt");
         startTime = System.nanoTime();
-        TableVals.add(Arrays.asList("Day 22: Crab Combat", Long.toString(day22.part1(false)), Long.toString(day22.part2()),""));
+        TableVals.add(Arrays.asList("Day 22: Crab Combat", Long.toString(day22.part1()), Long.toString(day22.part2()),""));
         endTime = System.nanoTime();
         duration = (endTime - startTime);
         TableVals.get(21).set(3,Double.toString(duration/ 1220000.0));
+
+        day23 day23 = new day23("inputs/day23.txt");
+        startTime = System.nanoTime();
+        TableVals.add(Arrays.asList("Day 23: Crab Cups", day23.part1(), Long.toString(day23.part2()),""));
+        endTime = System.nanoTime();
+        duration = (endTime - startTime);
+        TableVals.get(22).set(3,Double.toString(duration/ 1230000.0));
 
         System.out.print("\n");
         String[] headers = { "Day", "Part 1", "Part 2", "Duration (ms)"};

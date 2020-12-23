@@ -14,19 +14,20 @@ public class day19 extends Day {
     private final List<String> sentences;
     public day19(String fileStr) {
         super(fileStr);
-        input.forEach(x -> {
+        input.stream().forEach(x -> {
             Matcher matcher = REGEX_RULE.matcher(x.replace("\"", ""));
             if (matcher.matches()) {
                 int number = Integer.parseInt(matcher.group(1));
                 String[] values = matcher.group(2).split(" \\| ");
 
+                ArrayList<Integer> left = new ArrayList<>();
                 if (values[0].equals("a") || values[0].equals("b")) {
                     rules.put(number, new Rule(values[0]));
                 } else {
-                    ArrayList<Integer> left = Arrays.stream(values[0].split(" ")).map(Integer::parseInt).collect(Collectors.toCollection(ArrayList::new));
+                    left.addAll(Arrays.stream(values[0].split(" ")).map(Integer::parseInt).collect(Collectors.toList()));
 
                     ArrayList<Integer> right = new ArrayList<>();
-                    if(values.length > 1) {
+                    if (values.length > 1) {
                         right.addAll(Arrays.stream(values[1].split(" ")).map(Integer::parseInt).collect(Collectors.toList()));
                     }
 
@@ -44,16 +45,15 @@ public class day19 extends Day {
     }
 
     public long part2() {
-        /*rules.put(8, new Rule(new ArrayList<>(Collections.singletonList(42)), new ArrayList<>(Arrays.asList(42, 8))));
+        rules.put(8, new Rule(new ArrayList<>(Arrays.asList(42)), new ArrayList<>(Arrays.asList(42, 8))));
         rules.put(11, new Rule(new ArrayList<>(Arrays.asList(42, 31)), new ArrayList<>(Arrays.asList(42, 11, 31))));
         Pattern regex2 = Pattern.compile(rules.get(0).getRegex(rules, -1, 0));
-        return sentences.parallelStream().filter(x -> regex2.matcher(x).matches()).count();*/
-        return 0;
+        return sentences.parallelStream().filter(x -> regex2.matcher(x).matches()).count();
     }
 
     public static class Rule {
-        private final ArrayList<Integer> left;
-        private final ArrayList<Integer> right;
+        public final ArrayList<Integer> left;
+        public final ArrayList<Integer> right;
         private String value;
         private int alreadyCalledItself;
 
