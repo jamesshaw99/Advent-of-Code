@@ -177,6 +177,13 @@ public class Main {
         duration = (endTime - startTime);
         TableVals.get(22).set(3,Double.toString(duration/ 1230000.0));
 
+        day24 day24 = new day24("inputs/day24.txt");
+        startTime = System.nanoTime();
+        TableVals.add(Arrays.asList("Day 24: Lobby Layout", Long.toString(day24.part1()), day24.part2(),""));
+        endTime = System.nanoTime();
+        duration = (endTime - startTime);
+        TableVals.get(23).set(3,Double.toString(duration/ 1240000.0));
+
         System.out.print("\n");
         String[] headers = { "Day", "Part 1", "Part 2", "Duration (ms)"};
         String[][] data = new String[TableVals.size()][];
