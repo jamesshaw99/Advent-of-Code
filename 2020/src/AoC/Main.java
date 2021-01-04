@@ -179,10 +179,17 @@ public class Main {
 
         day24 day24 = new day24("inputs/day24.txt");
         startTime = System.nanoTime();
-        TableVals.add(Arrays.asList("Day 24: Lobby Layout", Long.toString(day24.part1()), day24.part2(),""));
+        TableVals.add(Arrays.asList("Day 24: Lobby Layout", Long.toString(day24.part1()), Long.toString(day24.part2()),""));
         endTime = System.nanoTime();
         duration = (endTime - startTime);
         TableVals.get(23).set(3,Double.toString(duration/ 1240000.0));
+
+        day25 day25 = new day25("inputs/day25.txt");
+        startTime = System.nanoTime();
+        TableVals.add(Arrays.asList("Day 25: Combo Breaker", Long.toString(day25.part1()), Integer.toString(day25.part2()),""));
+        endTime = System.nanoTime();
+        duration = (endTime - startTime);
+        TableVals.get(24).set(3,Double.toString(duration/ 1250000.0));
 
         System.out.print("\n");
         String[] headers = { "Day", "Part 1", "Part 2", "Duration (ms)"};

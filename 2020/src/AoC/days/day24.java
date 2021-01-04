@@ -3,64 +3,79 @@ package AoC.days;
 import AoC.Day;
 
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class day24 extends Day {
-    Map<String, Point> coords = new HashMap<>();
-    List<Point> tiles = new ArrayList<>();
+    private Map<String, Point> coords = new HashMap<>();
+    private Set<Point> blackTiles = new HashSet<>();
 
     public day24(String fileStr) {
         super(fileStr);
-        coords.put("ne", new Point(1, 1));
-        coords.put("nw", new Point(-1, 1));
-        coords.put("se", new Point(1, -1));
-        coords.put("sw", new Point(-1, -1));
+        coords.put("ne", new Point(1, 2));
+        coords.put("nw", new Point(-1, 2));
+        coords.put("se", new Point(1, -2));
+        coords.put("sw", new Point(-1, -2));
         coords.put("e", new Point(2, 0));
         coords.put("w", new Point(-2, 0));
     }
 
     public int part1() {
-        for (String tile: input) {
-            Point location = new Point(0,0);
-            for (int i = 0; i < tile.length(); i++) {
-                switch (tile.charAt(i)) {
-                    case 'e':
-                        location.translate(coords.get("e").x, coords.get("e").y);
+        for(String line: input) {
+            int x = 0, y = 0,  i = 0;
+            while (i < line.length()){
+                for(String key: coords.keySet()){
+                    if (line.startsWith(key, i)){
+                        x += coords.get(key).x;
+                        y += coords.get(key).y;
+                        i += key.length();
                         break;
-                    case 'w':
-                        location.translate(coords.get("w").x, coords.get("w").y);
-                        break;
-                    case 's':
-                        if (tile.charAt(i + 1) == 'e') {
-                            location.translate(coords.get("se").x, coords.get("se").y);
-                        } else {
-                            location.translate(coords.get("sw").x, coords.get("sw").y);
-                        }
-                        i++;
-                        break;
-                    case 'n':
-                        if (tile.charAt(i + 1) == 'e') {
-                            location.translate(coords.get("ne").x, coords.get("ne").y);
-                        } else {
-                            location.translate(coords.get("nw").x, coords.get("nw").y);
-                        }
-                        i++;
-                        break;
+                    }
                 }
             }
-            if (tiles.contains(location)){
-                tiles.remove(location);
+            Point tile = new Point(x, y);
+            if (blackTiles.contains(tile)){
+                blackTiles.remove(tile);
             } else {
-                tiles.add(location);
+                blackTiles.add(tile);
             }
         }
-        return tiles.size();
+        return blackTiles.size();
     }
 
-    public String part2() {
-        return "";
+    public int part2() {
+        for (int i = 0; i < 100; i++) {
+            Set<Point> toDiscard = new HashSet<>();
+            Set<Point> toAdd = new HashSet<>();
+            Map<Point, Integer> seenWhiteTiles = new HashMap<>();
+            for (Point tile: blackTiles) {
+                int count = 0;
+                for(String key: coords.keySet()){
+                    Point point = new Point(tile.x + coords.get(key).x, tile.y + coords.get(key).y);
+                    if (blackTiles.contains(point)){
+                        count++;
+                    } else {
+                        if (seenWhiteTiles.containsKey(point)){
+                            seenWhiteTiles.put(point, seenWhiteTiles.get(point)+1);
+                        } else {
+                            seenWhiteTiles.put(point, 1);
+                        }
+                    }
+                }
+                if (count == 0 || count > 2) {
+                    toDiscard.add(tile);
+                }
+            }
+            for (Point point: seenWhiteTiles.keySet()){
+                if (seenWhiteTiles.get(point) == 2) {
+                    toAdd.add(point);
+                }
+            }
+            blackTiles.removeAll(toDiscard);
+            blackTiles.addAll(toAdd);
+        }
+        return blackTiles.size();
     }
 }
