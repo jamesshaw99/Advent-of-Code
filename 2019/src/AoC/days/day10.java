@@ -68,7 +68,7 @@ public class day10 extends Day {
     }
 
     public static class Point {
-        private int x, y;
+        private final int x, y;
 
         public Point(int x, int y) {
             this.x = x;

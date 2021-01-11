@@ -91,23 +91,49 @@ public class Main {
         TableVals.add(Arrays.asList("Day 11: Space Police", day11.part1(), day11.part2(),""));
         endTime = System.nanoTime();
         duration = (endTime - startTime);
-        TableVals.get(10).set(3,Double.toString(duration/ 1100000.0));
+        TableVals.get(10).set(3,Double.toString(duration/ 1000000.0));
 
         day12 day12 = new day12("inputs/day12.txt");
         startTime = System.nanoTime();
         TableVals.add(Arrays.asList("Day 12: The N-Body Problem", day12.part1(), day12.part2(),""));
         endTime = System.nanoTime();
         duration = (endTime - startTime);
-        TableVals.get(11).set(3,Double.toString(duration/ 1200000.0));
+        TableVals.get(11).set(3,Double.toString(duration/ 1000000.0));
 
         day13 day13 = new day13("inputs/day13.txt");
         startTime = System.nanoTime();
         TableVals.add(Arrays.asList("Day 13: Care Package", day13.part1(), day13.part2(),""));
         endTime = System.nanoTime();
         duration = (endTime - startTime);
-        TableVals.get(12).set(3,Double.toString(duration/ 1300000.0));
+        TableVals.get(12).set(3,Double.toString(duration/ 1000000.0));
 
+        day14 day14 = new day14("inputs/day14.txt");
+        startTime = System.nanoTime();
+        TableVals.add(Arrays.asList("Day 14: Space Stoichiometry", day14.part1(), day14.part2(),""));
+        endTime = System.nanoTime();
+        duration = (endTime - startTime);
+        TableVals.get(13).set(3,Double.toString(duration/ 1000000.0));
 
+        day15 day15 = new day15("inputs/day15.txt");
+        startTime = System.nanoTime();
+        TableVals.add(Arrays.asList("Day 15: Oxygen System", day15.part1(), day15.part2(),""));
+        endTime = System.nanoTime();
+        duration = (endTime - startTime);
+        TableVals.get(14).set(3,Double.toString(duration/ 1000000.0));
+
+        day16 day16 = new day16("inputs/day16.txt");
+        startTime = System.nanoTime();
+        TableVals.add(Arrays.asList("Day 16: Flawed Frequency Transmission", day16.part1(), day16.part2(),""));
+        endTime = System.nanoTime();
+        duration = (endTime - startTime);
+        TableVals.get(15).set(3,Double.toString(duration/ 1000000.0));
+
+        day17 day17 = new day17("inputs/day17.txt");
+        startTime = System.nanoTime();
+        TableVals.add(Arrays.asList("Day 17: Set and Forget", day17.part1(), day17.part2(),""));
+        endTime = System.nanoTime();
+        duration = (endTime - startTime);
+        TableVals.get(16).set(3,Double.toString(duration/ 1000000.0));
 
 
         String[] headers = { "Day", "Part 1", "Part 2", "Total Duration (ms)"};

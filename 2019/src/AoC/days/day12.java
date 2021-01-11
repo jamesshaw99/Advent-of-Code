@@ -1,7 +1,6 @@
 package AoC.days;
 
 import AoC.Day;
-import AoC.intcode.ProgramExecutor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +17,7 @@ public class day12 extends Day {
             for (int i = 0; i < rawCoor.length; i++){
                 rawCoor[i] = rawCoor[i].substring(rawCoor[i].indexOf('=')+1);
             }
-            moons.add(new Moon(rawCoor[0], rawCoor[1],rawCoor[2]));
+            moons.add(new Moon(rawCoor[0], rawCoor[1], rawCoor[2]));
         }
         moonsStart = moons.stream().map(Moon::new).collect(toList());
     }
@@ -130,7 +129,7 @@ public class day12 extends Day {
         }
     }
 
-    private class Moon {
+    private static class Moon {
         private int posX, posY, posZ, velX = 0, velY = 0, velZ = 0;
 
         public Moon (String x, String y, String z) {
