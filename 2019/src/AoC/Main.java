@@ -135,6 +135,13 @@ public class Main {
         duration = (endTime - startTime);
         TableVals.get(16).set(3,Double.toString(duration/ 1000000.0));
 
+        day18 day18 = new day18("inputs/day18.txt");
+        startTime = System.nanoTime();
+        TableVals.add(Arrays.asList("Day 18: Many-Worlds Interpretation", day18.part1(), day18.part2(),""));
+        endTime = System.nanoTime();
+        duration = (endTime - startTime);
+        TableVals.get(17).set(3,Double.toString(duration/ 1000000.0));
+
 
         String[] headers = { "Day", "Part 1", "Part 2", "Total Duration (ms)"};
         String[][] data = new String[TableVals.size()][];

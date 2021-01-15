@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 public class day17 extends Day {
     private final IntcodeComputer intcodeComputer;
     private final HashMap<Point, Character> map = new HashMap<>();
-    private final boolean print = true;
+    private final boolean print = false;
 
     public day17(String fileStr) {
         super(fileStr);
@@ -63,7 +63,7 @@ public class day17 extends Day {
             }
         }
 
-        String exitReason = goComputer.runProgram();
+        goComputer.runProgram();
 
         return "" + ((LinkedList<Long>)goComputer.getOutputs()).getLast();
     }
@@ -83,24 +83,25 @@ public class day17 extends Day {
 
         List<String> a = findHighestValuedSectionOfStringToReplace(pathToEnd, bannedStartingAList);
         StringBuilder stringBuilder = new StringBuilder();
-        a.forEach(aentry -> stringBuilder.append(aentry + ",") );
+        a.forEach(aentry -> stringBuilder.append(aentry).append(","));
         pathToEnd = pathToEnd.replace(stringBuilder.toString(), "A,");
 
         List<String> b = findHighestValuedSectionOfStringToReplace(pathToEnd, new ArrayList<>());
         StringBuilder stringBuilder2 = new StringBuilder();
-        b.forEach(bentry -> stringBuilder2.append(bentry + ",") );
+        b.forEach(bentry -> stringBuilder2.append(bentry).append(","));
         pathToEnd = pathToEnd.replace(stringBuilder2.toString(), "B,");
 
         List<String> c = findHighestValuedSectionOfStringToReplace(pathToEnd, new ArrayList<>());
         StringBuilder stringBuilder3 = new StringBuilder();
-        c.forEach(centry -> stringBuilder3.append(centry + ",") );
+        c.forEach(centry -> stringBuilder3.append(centry).append(","));
         pathToEnd = pathToEnd.replace(stringBuilder3.toString(), "C,");
 
 
         boolean finished = true;
         for (String string :  pathToEnd.split(",")) {
-            if(string.length() != 1) {
+            if (string.length() != 1) {
                 finished = false;
+                break;
             }
         }
 
@@ -231,8 +232,8 @@ public class day17 extends Day {
     }
 
     private static char findDirHorizontal(Map<Point, Character> map, Point pos, DirectionFacing facing) {
-        char plusY = map.getOrDefault(new Point((int)Math.round(pos.getX()), (int)Math.round(pos.getY()) + 1), 'A');
-        char minusY = map.getOrDefault(new Point((int)Math.round(pos.getX()), (int)Math.round(pos.getY()) - 1), 'A');
+        char plusY = map.getOrDefault(new Point((int)Math.round(pos.getX()), (int)Math.round(pos.getY()) + 1), 'Å');
+        char minusY = map.getOrDefault(new Point((int)Math.round(pos.getX()), (int)Math.round(pos.getY()) - 1), 'Å');
 
         if(plusY == '#') {
             if(facing == DirectionFacing.LEFT) {
@@ -240,34 +241,38 @@ public class day17 extends Day {
             } else {
                 return 'R';
             }
-        } else if(minusY == '#'){
+        }
+        else if (minusY == '#') {
             if(facing == DirectionFacing.LEFT) {
                 return 'R';
             } else {
                 return 'L';
             }
-        } else {
+        }
+        else {
             return ' ';
         }
     }
 
     private static char findDirVertical(Map<Point, Character> map, Point pos, DirectionFacing facing) {
-        char plusX = map.getOrDefault(new Point((int)Math.round(pos.getX()) + 1, (int)Math.round(pos.getY())), 'A');
-        char minusX = map.getOrDefault(new Point((int)Math.round(pos.getX()) - 1, (int)Math.round(pos.getY())), 'A');
+        char plusX = map.getOrDefault(new Point((int)Math.round(pos.getX()) + 1, (int)Math.round(pos.getY())), 'Å');
+        char minusX = map.getOrDefault(new Point((int)Math.round(pos.getX()) - 1, (int)Math.round(pos.getY())), 'Å');
 
         if(plusX == '#') {
+            if(facing == DirectionFacing.UP) {
+                return 'R';
+            } else {
+                return 'L';
+            }
+        }
+        else if (minusX == '#') {
             if(facing == DirectionFacing.UP) {
                 return 'L';
             } else {
                 return 'R';
             }
-        } else if(minusX == '#'){
-            if(facing == DirectionFacing.DOWN) {
-                return 'R';
-            } else {
-                return 'L';
-            }
-        } else {
+        }
+        else {
             return ' ';
         }
     }
