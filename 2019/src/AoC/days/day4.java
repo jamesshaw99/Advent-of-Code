@@ -1,6 +1,6 @@
 package AoC.days;
 
-import AoC.Day;
+import AoC.helpers.Day;
 
 public class day4 extends Day {
     private final int min;

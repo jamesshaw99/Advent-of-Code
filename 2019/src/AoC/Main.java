@@ -142,6 +142,20 @@ public class Main {
         duration = (endTime - startTime);
         TableVals.get(17).set(3,Double.toString(duration/ 1000000.0));
 
+        day19 day19 = new day19("inputs/day19.txt");
+        startTime = System.nanoTime();
+        TableVals.add(Arrays.asList("Day 19: Tractor Beam", day19.part1(), day19.part2(),""));
+        endTime = System.nanoTime();
+        duration = (endTime - startTime);
+        TableVals.get(18).set(3,Double.toString(duration/ 1000000.0));
+
+        day20 day20 = new day20("inputs/day20.txt");
+        startTime = System.nanoTime();
+        TableVals.add(Arrays.asList("Day 20: Donut Maze", day20.part1(), day20.part2(),""));
+        endTime = System.nanoTime();
+        duration = (endTime - startTime);
+        TableVals.get(19).set(3,Double.toString(duration/ 1000000.0));
+
 
         String[] headers = { "Day", "Part 1", "Part 2", "Total Duration (ms)"};
         String[][] data = new String[TableVals.size()][];

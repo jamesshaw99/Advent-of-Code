@@ -1,6 +1,6 @@
 package AoC.days;
 
-import AoC.Day;
+import AoC.helpers.Day;
 
 import org.apache.commons.lang3.StringUtils;
 

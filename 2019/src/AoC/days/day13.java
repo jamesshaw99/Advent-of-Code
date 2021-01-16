@@ -1,7 +1,7 @@
 package AoC.days;
 
-import AoC.Day;
-import AoC.intcode.ProgramExecutor;
+import AoC.helpers.Day;
+import AoC.helpers.intcode.ProgramExecutor;
 
 import java.util.List;
 

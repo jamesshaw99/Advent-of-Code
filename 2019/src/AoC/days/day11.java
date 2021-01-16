@@ -2,8 +2,8 @@
 
 package AoC.days;
 
-import AoC.Day;
-import AoC.IntcodeComputer;
+import AoC.helpers.Day;
+import AoC.helpers.IntcodeComputer;
 
 import java.util.*;
 

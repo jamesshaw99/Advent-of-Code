@@ -1,6 +1,6 @@
 package AoC.days;
 
-import AoC.Day;
+import AoC.helpers.Day;
 
 import java.util.*;
 

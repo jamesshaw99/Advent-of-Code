@@ -1,7 +1,7 @@
 package AoC.days;
 
-import AoC.Day;
-import AoC.intcode.ProgramExecutor;
+import AoC.helpers.Day;
+import AoC.helpers.intcode.ProgramExecutor;
 
 public class day9 extends Day {
     private final String text;
