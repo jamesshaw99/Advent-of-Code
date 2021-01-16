@@ -52,8 +52,10 @@ I have chosen to complete these coding challenges in Java using the IntelliJ IDE
 - [Day18](https://github.com/jamesshaw99/Advent-of-Code/blob/main/2019/src/AoC/days/day18.java)
 - [Day19](https://github.com/jamesshaw99/Advent-of-Code/blob/main/2019/src/AoC/days/day19.java)
 - [Day20](https://github.com/jamesshaw99/Advent-of-Code/blob/main/2019/src/AoC/days/day20.java)
+<!--
 - [Day21](https://github.com/jamesshaw99/Advent-of-Code/blob/main/2019/src/AoC/days/day21.java)
 - [Day22](https://github.com/jamesshaw99/Advent-of-Code/blob/main/2019/src/AoC/days/day22.java)
 - [Day23](https://github.com/jamesshaw99/Advent-of-Code/blob/main/2019/src/AoC/days/day23.java)
 - [Day24](https://github.com/jamesshaw99/Advent-of-Code/blob/main/2019/src/AoC/days/day24.java)
 - [Day25](https://github.com/jamesshaw99/Advent-of-Code/blob/main/2019/src/AoC/days/day25.java)
+-->
