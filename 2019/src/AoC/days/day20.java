@@ -90,12 +90,12 @@ public class day20 extends Day {
         }
     }
 
-    private class Maze3D{
+    private class Maze3D {
         private final Point3d start;
         private final Point3d end;
         private final Maze3DGraph graph;
 
-        private Maze3D(String input){
+        private Maze3D(String input) {
             String[][] grid = getRawGrid(input);
             Set<Point> tunnels = getTunnels(grid);
 
@@ -104,21 +104,21 @@ public class day20 extends Day {
 
             Point planarStart = outer.get("AA");
             this.start = new Point3d(planarStart.x, planarStart.y, 0);
-            Point planarEnd = outer.get("ZZ");
-            this.end = new Point3d(planarEnd.x, planarEnd.y, 0);
+            Point planerEnd = outer.get("ZZ");
+            this.end = new Point3d(planerEnd.x, planerEnd.y, 0);
 
             Map<Point, Point> innerPortals = new HashMap<>();
             Map<Point, Point> outerPortals = new HashMap<>();
             inner.forEach((label, innerPoint) -> {
                 Point outerPoint = outer.get(label);
                 innerPortals.put(innerPoint, outerPoint);
-                innerPortals.put(outerPoint, innerPoint);
+                outerPortals.put(outerPoint, innerPoint);
             });
 
             this.graph = new Maze3DGraph(this.start, this.end, tunnels, innerPortals, outerPortals);
         }
 
-        private long getShortestPathLength(){
+        private long getShortestPathLength() {
             return new BidirectionalDijkstraShortestPath<>(this.graph).getPath(this.start, this.end).getLength();
         }
     }

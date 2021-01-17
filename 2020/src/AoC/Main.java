@@ -91,105 +91,105 @@ public class Main {
         TableVals.add(Arrays.asList("Day 11: Seating System", Integer.toString(day11.part1()), Long.toString(day11.part2()),""));
         endTime = System.nanoTime();
         duration = (endTime - startTime);
-        TableVals.get(10).set(3,Double.toString(duration/ 1100000.0));
+        TableVals.get(10).set(3,Double.toString(duration/ 1000000.0));
 
         day12 day12 = new day12("inputs/day12.txt");
         startTime = System.nanoTime();
         TableVals.add(Arrays.asList("Day 12: Rain Risk", Integer.toString(day12.part1()), Long.toString(day12.part2()),""));
         endTime = System.nanoTime();
         duration = (endTime - startTime);
-        TableVals.get(11).set(3,Double.toString(duration/ 1200000.0));
+        TableVals.get(11).set(3,Double.toString(duration/ 1000000.0));
 
         day13 day13 = new day13("inputs/day13.txt");
         startTime = System.nanoTime();
         TableVals.add(Arrays.asList("Day 13: Shuttle Search", Integer.toString(day13.part1()), Long.toString(day13.part2()),""));
         endTime = System.nanoTime();
         duration = (endTime - startTime);
-        TableVals.get(12).set(3,Double.toString(duration/ 1200000.0));
+        TableVals.get(12).set(3,Double.toString(duration/ 1000000.0));
 
         day14 day14 = new day14("inputs/day14.txt");
         startTime = System.nanoTime();
         TableVals.add(Arrays.asList("Day 14: Docking Data", Long.toString(day14.part1()), Long.toString(day14.part2()),""));
         endTime = System.nanoTime();
         duration = (endTime - startTime);
-        TableVals.get(13).set(3,Double.toString(duration/ 1200000.0));
+        TableVals.get(13).set(3,Double.toString(duration/ 1000000.0));
 
         day15 day15 = new day15("inputs/day15.txt");
         startTime = System.nanoTime();
         TableVals.add(Arrays.asList("Day 15: Rambunctious Recitation", Long.toString(day15.part1()), Long.toString(day15.part2()),""));
         endTime = System.nanoTime();
         duration = (endTime - startTime);
-        TableVals.get(14).set(3,Double.toString(duration/ 1200000.0));
+        TableVals.get(14).set(3,Double.toString(duration/ 1000000.0));
 
         day16 day16 = new day16("inputs/day16.txt");
         startTime = System.nanoTime();
         TableVals.add(Arrays.asList("Day 16: Ticket Translation", Long.toString(day16.part1()), Long.toString(day16.part2()),""));
         endTime = System.nanoTime();
         duration = (endTime - startTime);
-        TableVals.get(15).set(3,Double.toString(duration/ 1200000.0));
+        TableVals.get(15).set(3,Double.toString(duration/ 1000000.0));
 
         day17 day17 = new day17("inputs/day17.txt");
         startTime = System.nanoTime();
         TableVals.add(Arrays.asList("Day 17: Conway Cubes", Long.toString(day17.part1()), Long.toString(day17.part2()),""));
         endTime = System.nanoTime();
         duration = (endTime - startTime);
-        TableVals.get(16).set(3,Double.toString(duration/ 1200000.0));
+        TableVals.get(16).set(3,Double.toString(duration/ 1000000.0));
 
         day18 day18 = new day18("inputs/day18.txt");
         startTime = System.nanoTime();
         TableVals.add(Arrays.asList("Day 18: Operation Order", Long.toString(Math.round(day18.part1())), Long.toString(Math.round(day18.part2())),""));
         endTime = System.nanoTime();
         duration = (endTime - startTime);
-        TableVals.get(17).set(3,Double.toString(duration/ 1200000.0));
+        TableVals.get(17).set(3,Double.toString(duration/ 1000000.0));
 
         day19 day19 = new day19("inputs/day19.txt");
         startTime = System.nanoTime();
         TableVals.add(Arrays.asList("Day 19: Monster Messages", Long.toString(day19.part1()), Long.toString(day19.part2()),""));
         endTime = System.nanoTime();
         duration = (endTime - startTime);
-        TableVals.get(18).set(3,Double.toString(duration/ 1200000.0));
+        TableVals.get(18).set(3,Double.toString(duration/ 1000000.0));
 
         day20 day20 = new day20("inputs/day20.txt");
         startTime = System.nanoTime();
         TableVals.add(Arrays.asList("Day 20: Jurassic Jigsaw", Long.toString(day20.part1()), Long.toString(day20.part2()),""));
         endTime = System.nanoTime();
         duration = (endTime - startTime);
-        TableVals.get(19).set(3,Double.toString(duration/ 1200000.0));
+        TableVals.get(19).set(3,Double.toString(duration/ 1000000.0));
 
         day21 day21 = new day21("inputs/day21.txt");
         startTime = System.nanoTime();
         TableVals.add(Arrays.asList("Day 21: Allergen Assessment", Long.toString(day21.part1()), day21.part2(),""));
         endTime = System.nanoTime();
         duration = (endTime - startTime);
-        TableVals.get(20).set(3,Double.toString(duration/ 1210000.0));
+        TableVals.get(20).set(3,Double.toString(duration/ 1000000.0));
 
         day22 day22 = new day22("inputs/day22.txt");
         startTime = System.nanoTime();
         TableVals.add(Arrays.asList("Day 22: Crab Combat", Long.toString(day22.part1()), Long.toString(day22.part2()),""));
         endTime = System.nanoTime();
         duration = (endTime - startTime);
-        TableVals.get(21).set(3,Double.toString(duration/ 1220000.0));
+        TableVals.get(21).set(3,Double.toString(duration/ 1000000.0));
 
         day23 day23 = new day23("inputs/day23.txt");
         startTime = System.nanoTime();
         TableVals.add(Arrays.asList("Day 23: Crab Cups", day23.part1(), Long.toString(day23.part2()),""));
         endTime = System.nanoTime();
         duration = (endTime - startTime);
-        TableVals.get(22).set(3,Double.toString(duration/ 1230000.0));
+        TableVals.get(22).set(3,Double.toString(duration/ 1000000.0));
 
         day24 day24 = new day24("inputs/day24.txt");
         startTime = System.nanoTime();
         TableVals.add(Arrays.asList("Day 24: Lobby Layout", Long.toString(day24.part1()), Long.toString(day24.part2()),""));
         endTime = System.nanoTime();
         duration = (endTime - startTime);
-        TableVals.get(23).set(3,Double.toString(duration/ 1240000.0));
+        TableVals.get(23).set(3,Double.toString(duration/ 1000000.0));
 
         day25 day25 = new day25("inputs/day25.txt");
         startTime = System.nanoTime();
         TableVals.add(Arrays.asList("Day 25: Combo Breaker", Long.toString(day25.part1()), Integer.toString(day25.part2()),""));
         endTime = System.nanoTime();
         duration = (endTime - startTime);
-        TableVals.get(24).set(3,Double.toString(duration/ 1250000.0));
+        TableVals.get(24).set(3,Double.toString(duration/ 1000000.0));
 
         System.out.print("\n");
         String[] headers = { "Day", "Part 1", "Part 2", "Duration (ms)"};

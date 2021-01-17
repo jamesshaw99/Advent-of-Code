@@ -156,6 +156,13 @@ public class Main {
         duration = (endTime - startTime);
         TableVals.get(19).set(3,Double.toString(duration/ 1000000.0));
 
+        day21 day21 = new day21("inputs/day21.txt");
+        startTime = System.nanoTime();
+        TableVals.add(Arrays.asList("Day 21: Springdroid Adventure", day21.part1(), day21.part2(),""));
+        endTime = System.nanoTime();
+        duration = (endTime - startTime);
+        TableVals.get(20).set(3,Double.toString(duration/ 1000000.0));
+
 
         String[] headers = { "Day", "Part 1", "Part 2", "Total Duration (ms)"};
         String[][] data = new String[TableVals.size()][];
