@@ -163,6 +163,13 @@ public class Main {
         duration = (endTime - startTime);
         TableVals.get(20).set(3,Double.toString(duration/ 1000000.0));
 
+        day22 day22 = new day22("inputs/day22.txt");
+        startTime = System.nanoTime();
+        TableVals.add(Arrays.asList("Day 22: Slam Shuffle", day22.part1(), day22.part2(),""));
+        endTime = System.nanoTime();
+        duration = (endTime - startTime);
+        TableVals.get(21).set(3,Double.toString(duration/ 1000000.0));
+
 
         String[] headers = { "Day", "Part 1", "Part 2", "Total Duration (ms)"};
         String[][] data = new String[TableVals.size()][];
