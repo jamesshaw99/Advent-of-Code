@@ -6,7 +6,7 @@ import AoC.helpers.IntcodeComputer;
 import java.util.LinkedList;
 
 public class day21 extends Day {
-    private String instructions;
+    private final String instructions;
     public day21(String fileStr) {
         super(fileStr);
         instructions = input.get(0);
@@ -23,7 +23,7 @@ public class day21 extends Day {
     }
 
     private long runSpringdroid(String inputString) {
-        long input = 0, output = 0;
+        long input, output;
         String result = "NEED_INPUT";
         IntcodeComputer springdroid = new IntcodeComputer(instructions);
         while(true) {
@@ -32,7 +32,7 @@ public class day21 extends Day {
                 inputString = inputString.substring(1);
                 springdroid.addInput(input);
             } else {
-                output = ((LinkedList<Long>)springdroid.getOutputs()).getLast();
+                output = springdroid.getLastOutput();
                 break;
             }
             result = springdroid.runProgram();

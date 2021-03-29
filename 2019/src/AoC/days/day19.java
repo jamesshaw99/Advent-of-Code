@@ -62,6 +62,6 @@ public class day19 extends Day {
         intcode.addInput(x);
         intcode.addInput(y);
         intcode.runProgram();
-        return ((LinkedList<Long>)intcode.getOutputs()).getLast() == 1;
+        return intcode.getLastOutput() == 1;
     }
 }

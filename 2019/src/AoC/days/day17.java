@@ -65,7 +65,7 @@ public class day17 extends Day {
 
         goComputer.runProgram();
 
-        return "" + ((LinkedList<Long>)goComputer.getOutputs()).getLast();
+        return "" + goComputer.getLastOutput();
     }
 
     private static List<Long> stringToLongRepresentation(String x) {

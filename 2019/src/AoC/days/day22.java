@@ -24,76 +24,44 @@ public class day22 extends Day {
     }
 
     public String part2() {
-        long len = 119315717514047L,
-            pos = 2020,
-            times = 101741582076661L%(len-1);
-        int t = 0;
-        while(true) {
-            long oldpos = pos;
-            //new_pos = a * old_pos + b;
-            BigInteger a = BigInteger.ONE;
-            BigInteger b = BigInteger.ZERO;
-            for (String line : input) {
-                if(line.equals("deal into new stack")){
-                    pos = len - 1 - pos;
-                    a = a.multiply(BigInteger.valueOf(-1));
-                    b = b.multiply(BigInteger.valueOf(-1)).add(BigInteger.valueOf(len - 1));
-                } else if(line.startsWith("deal with increment ")){
-                    long n = Long.parseLong(line.split(" ")[3]);
-                    long ninv = modInverse(n, len);
-                    a = a.multiply(BigInteger.valueOf(ninv));
-                    b = b.multiply(BigInteger.valueOf(ninv));
-                    pos = (ninv*pos)%len;
-                } else if(line.startsWith("cut")){
-                    long n = Long.parseLong(line.split(" ")[1]);
-                    if (n < 0) {
-                        n = len - Math.abs(n);
-                    }
-                    pos = (pos + len - n) % len;
-                }
+        long n = 119315717514047L,
+            c = 2020,
+            a = 1,
+            b = 0,
+            la = 0,
+            lb = 0;
+        for (String line: input) {
+            if(line.equals("deal into new stack")){
+                la = -1;
+                lb = -1;
+            }else if(line.startsWith("deal with increment ")){
+                la = Integer.parseInt(line.split(" ")[3]);
+                lb = 0;
+            } else if(line.startsWith("cut ")){
+                la = 1;
+                lb = -Integer.parseInt(line.split(" ")[1]);
             }
-            t++;
-            System.out.println(t + ", " + a + ", " + b + ", " + pos);
-            if(t == times) {
-                break;
-            }
-            if(pos == 2020){
-                System.out.println(t);
-                break;
-            }
+            a = (la * a) % n;
+            b = (la * b + lb) % n;
         }
-        return "" + t;
+
+        long m = 101741582076661L;
+        BigInteger ma = pow(a, m, n),
+            mb = ma.subtract(BigInteger.ONE).multiply(BigInteger.valueOf(b)).multiply(inv(a-1, n)).mod(BigInteger.valueOf(n));
+
+        return "Result at 2020: " + BigInteger.valueOf(c).subtract(mb).multiply(inv(ma, n)).mod(BigInteger.valueOf(n));
     }
 
-    /*private long processPart2(String line, long len, long pos, int t){
-        if(line.equals("deal into new stack")){
-            pos = len - 1 - pos;
-            a = -a,
-        } else if(line.startsWith("deal with increment ")){
-            long n = Long.parseLong(line.split(" ")[3]);
-            pos = (n*pos)%len;
-        } else if(line.startsWith("cut")){
-            long n = Long.parseLong(line.split(" ")[1]);
-            if (n < 0) {
-                n = len - Math.abs(n);
-            }
-            if (pos < n) {
-                assert t==0;
-                pos = (len - n) + pos;
-            } else {
-                pos -= n;
-            }
-        }
-        return pos;
-    }*/
+    private BigInteger pow(long a, long b, long c){
+        return BigInteger.valueOf(a).modPow(BigInteger.valueOf(b), BigInteger.valueOf(c));
+    }
 
-    static long modInverse(long a, long m)
-    {
-        a = a % m;
-        for (int x = 1; x < m; x++)
-            if ((a * x) % m == 1)
-                return x;
-        return 1;
+    private BigInteger inv(long a, long b) {
+        return pow(a, b-2, b);
+    }
+
+    private BigInteger inv(BigInteger a, long b) {
+        return a.modPow(BigInteger.valueOf(b-2), BigInteger.valueOf(b));
     }
 
     private List<Integer> processTechnique(String line, List<Integer> deck) {

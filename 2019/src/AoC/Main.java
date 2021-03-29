@@ -170,6 +170,26 @@ public class Main {
         duration = (endTime - startTime);
         TableVals.get(21).set(3,Double.toString(duration/ 1000000.0));
 
+        day23 day23 = new day23("inputs/day23.txt");
+        startTime = System.nanoTime();
+        TableVals.add(Arrays.asList("Day 23: Category Six", day23.part1(), day23.part2(),""));
+        endTime = System.nanoTime();
+        duration = (endTime - startTime);
+        TableVals.get(22).set(3,Double.toString(duration/ 1000000.0));
+
+        day24 day24 = new day24("inputs/day24.txt");
+        startTime = System.nanoTime();
+        TableVals.add(Arrays.asList("Day 24: Planet of Discord", day24.part1(), day24.part2(),""));
+        endTime = System.nanoTime();
+        duration = (endTime - startTime);
+        TableVals.get(23).set(3,Double.toString(duration/ 1000000.0));
+
+        day25 day25 = new day25("inputs/day25.txt");
+        startTime = System.nanoTime();
+        TableVals.add(Arrays.asList("Day 25: Cryostasis", day25.part1(), day25.part2(),""));
+        endTime = System.nanoTime();
+        duration = (endTime - startTime);
+        TableVals.get(24).set(3,Double.toString(duration/ 1000000.0));
 
         String[] headers = { "Day", "Part 1", "Part 2", "Total Duration (ms)"};
         String[][] data = new String[TableVals.size()][];
@@ -178,5 +198,6 @@ public class Main {
             data[i] = row.toArray(new String[0]);
         }
         System.out.println(ANSI_RED + FlipTable.of(headers, data) + ANSI_RESET);
+        System.exit(0); // added as a catch for if threads in day 23 don't terminate correctly
     }
 }

@@ -1,18 +1,23 @@
 package AoC.helpers;
 
+import java.time.LocalTime;
 import java.util.*;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
 import java.util.stream.Collectors;
 
-public class IntcodeComputer {
+public class IntcodeComputer implements Runnable {
 
     private final List<Long> programMem;
     private final Map<Long, Long> extraTerrestrialMemory;
     private int programCount;
+    private static LocalTime idleSince = null;
+    private long lastOutput;
 
     long relativeBase = 0;
 
     private final Queue<Long> inputs = new LinkedList<>();
-    private final Queue<Long> outputs = new LinkedList<>();
+    private final BlockingQueue<Long> outputs = new ArrayBlockingQueue<>(10000);
 
 
     public IntcodeComputer(String instructionSet) {
@@ -28,8 +33,12 @@ public class IntcodeComputer {
         inputs.add(input);
     }
 
-    public Queue<Long> getOutputs() {
+    public BlockingQueue<Long> getOutputs() {
         return outputs;
+    }
+
+    public long getLastOutput() {
+        return lastOutput;
     }
 
 
@@ -77,9 +86,11 @@ public class IntcodeComputer {
                 if (operationCode == 3) {
                     if (inputs.size() == 0) {
                         programCount -= 1; //try this again if this gets ran again!
+                        idleSince = LocalTime.now();
                         return "NEED_INPUT";
                     }
                     else {
+                        idleSince = null;
                         long parameter1 = programMem.get(programCount++);
                         if (parameterModes[0] == 2) {
                             parameter1 = relativeBase + parameter1;
@@ -88,8 +99,8 @@ public class IntcodeComputer {
                     }
                 }
                 else if (operationCode == 4) {
-                    long output = getParameterValue(parameterModes[0], programCount++);
-                    outputs.add(output);
+                    lastOutput = getParameterValue(parameterModes[0], programCount++);
+                    outputs.add(lastOutput);
                 }
             }
             else if (operationCode == 5 || operationCode == 6) {
@@ -151,5 +162,14 @@ public class IntcodeComputer {
         else {
             programMem.set(index.intValue(), value);
         }
+    }
+
+    @Override
+    public void run() {
+        this.runProgram();
+    }
+
+    public static LocalTime idleTime() {
+        return idleSince;
     }
 }
