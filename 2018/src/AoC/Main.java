@@ -44,6 +44,13 @@ public class Main {
         duration = (endTime - startTime);
         TableVals.get(3).set(3, Double.toString(duration/ 1000000.0));
 
+        day5 day5 = new day5("inputs/day5.txt");
+        startTime = System.nanoTime();
+        TableVals.add(Arrays.asList("Day 5: Alchemical Reduction", day5.part1(), day5.part2(),""));
+        endTime = System.nanoTime();
+        duration = (endTime - startTime);
+        TableVals.get(4).set(3, Double.toString(duration/ 1000000.0));
+
         String[] headers = {"Day", "Part 1", "Part 2", "Total Duration (ms)"};
         String[][] data = new String[TableVals.size()][];
         for (int i = 0; i < TableVals.size(); i++) {
