@@ -30,6 +30,20 @@ public class Main {
         duration = (endTime - startTime);
         TableVals.get(1).set(3, Double.toString(duration/ 1000000.0));
 
+        day3 day3 = new day3("inputs/day3.txt");
+        startTime = System.nanoTime();
+        TableVals.add(Arrays.asList("Day 3: No Matter How You Slice It", day3.part1(), day3.part2(),""));
+        endTime = System.nanoTime();
+        duration = (endTime - startTime);
+        TableVals.get(2).set(3, Double.toString(duration/ 1000000.0));
+
+        day4 day4 = new day4("inputs/day4.txt");
+        startTime = System.nanoTime();
+        TableVals.add(Arrays.asList("Day 4: Repose Record", day4.part1(), day4.part2(),""));
+        endTime = System.nanoTime();
+        duration = (endTime - startTime);
+        TableVals.get(3).set(3, Double.toString(duration/ 1000000.0));
+
         String[] headers = {"Day", "Part 1", "Part 2", "Total Duration (ms)"};
         String[][] data = new String[TableVals.size()][];
         for (int i = 0; i < TableVals.size(); i++) {
