@@ -51,6 +51,20 @@ public class Main {
         duration = (endTime - startTime);
         TableVals.get(4).set(3, Double.toString(duration/ 1000000.0));
 
+        day6 day6 = new day6("inputs/day6.txt");
+        startTime = System.nanoTime();
+        TableVals.add(Arrays.asList("Day 6: Chronal Coordinates", day6.part1(), day6.part2(),""));
+        endTime = System.nanoTime();
+        duration = (endTime - startTime);
+        TableVals.get(5).set(3, Double.toString(duration/ 1000000.0));
+
+        day7 day7 = new day7("inputs/day7.txt");
+        startTime = System.nanoTime();
+        TableVals.add(Arrays.asList("Day 7: The Sum of Its Parts", day7.part1(), day7.part2(),""));
+        endTime = System.nanoTime();
+        duration = (endTime - startTime);
+        TableVals.get(6).set(3, Double.toString(duration/ 1000000.0));
+
         String[] headers = {"Day", "Part 1", "Part 2", "Total Duration (ms)"};
         String[][] data = new String[TableVals.size()][];
         for (int i = 0; i < TableVals.size(); i++) {
