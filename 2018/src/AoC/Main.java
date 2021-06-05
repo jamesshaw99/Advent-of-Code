@@ -65,6 +65,13 @@ public class Main {
         duration = (endTime - startTime);
         TableVals.get(6).set(3, Double.toString(duration/ 1000000.0));
 
+        day8 day8 = new day8("inputs/day8.txt");
+        startTime = System.nanoTime();
+        TableVals.add(Arrays.asList("Day 8: Memory Maneuver", day8.part1(), day8.part2(),""));
+        endTime = System.nanoTime();
+        duration = (endTime - startTime);
+        TableVals.get(7).set(3, Double.toString(duration/ 1000000.0));
+
         String[] headers = {"Day", "Part 1", "Part 2", "Total Duration (ms)"};
         String[][] data = new String[TableVals.size()][];
         for (int i = 0; i < TableVals.size(); i++) {
