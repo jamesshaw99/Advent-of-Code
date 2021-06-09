@@ -86,203 +86,203 @@ public class day7 extends Day {
 
         return "Time required to complete all steps: " + timeElapsed;
     }
-}
+    class Step implements Comparable<Step> {
+        private final char name;
+        private Set<Step> requirements = new TreeSet<>();
+        private boolean completed = false, undergoing = false;
 
-class Step implements Comparable<Step> {
-    private final char name;
-    private Set<Step> requirements = new TreeSet<>();
-    private boolean completed = false, undergoing = false;
+        public Step(final char name) {
+            this.name = name;
+        }
 
-    public Step(final char name) {
-        this.name = name;
-    }
+        public char getName(){
+            return this.name;
+        }
 
-    public char getName(){
-        return this.name;
-    }
+        public void addRequirement(Step step) {
+            requirements.add(step);
+        }
 
-    public void addRequirement(Step step) {
-        requirements.add(step);
-    }
+        public boolean isAvailable() {
+            if(requirements.isEmpty()) {
+                return true;
+            }
 
-    public boolean isAvailable() {
-        if(requirements.isEmpty()) {
+            for(Step step: requirements) {
+                if(!step.isCompleted()) {
+                    return false;
+                }
+            }
+
             return true;
         }
 
-        for(Step step: requirements) {
-            if(!step.isCompleted()) {
+        public boolean isCompleted() {
+            return completed;
+        }
+
+        public void setCompleted() {
+            completed = true;
+            undergoing = false;
+        }
+
+        public void resetCompleted() {
+            completed = false;
+        }
+
+        public void setUndergoing() {
+            undergoing = true;
+        }
+
+        public boolean isUndergoing() {
+            return undergoing;
+        }
+
+        public Step getNextStep() {
+            for(Step step: requirements){
+                if(!step.isAvailable()){
+                    return step;
+                }
+            }
+
+            return null;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if(!(o instanceof Step)){
                 return false;
             }
+
+            return ((Step) o).name == name;
         }
 
-        return true;
+        @Override
+        public int hashCode() {
+            return name;
+        }
+
+        @Override
+        public int compareTo(Step o) {
+            return name - o.name;
+        }
     }
 
-    public boolean isCompleted() {
-        return completed;
+    interface Callback {
+        void onWorkDone();
     }
 
-    public void setCompleted() {
-        completed = true;
-        undergoing = false;
-    }
+    class Worker {
+        private int workRemaining = 0;
+        private Step step;
+        private Callback callback;
 
-    public void resetCompleted() {
-        completed = false;
-    }
+        public void setWorking(Step step, Callback callback) {
+            workRemaining = step.getName() - 'A' + 1 + 60;
+            this.step = step;
+            this.callback = callback;
+            step.setUndergoing();
+        }
 
-    public void setUndergoing() {
-        undergoing = true;
-    }
-
-    public boolean isUndergoing() {
-        return undergoing;
-    }
-
-    public Step getNextStep() {
-        for(Step step: requirements){
-            if(!step.isAvailable()){
-                return step;
+        public void timeTick() {
+            if(workRemaining > 0) {
+                workRemaining--;
+            }
+            if(workRemaining == 0) {
+                if(step != null) {
+                    step.setCompleted();
+                }
+                if(callback != null) {
+                    callback.onWorkDone();
+                    callback = null;
+                }
             }
         }
 
-        return null;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if(!(o instanceof Step)){
-            return false;
+        public boolean isAvailable() {
+            return workRemaining == 0;
         }
 
-        return ((Step) o).name == name;
-    }
-
-    @Override
-    public int hashCode() {
-        return name;
-    }
-
-    @Override
-    public int compareTo(Step o) {
-        return name - o.name;
-    }
-}
-
-interface Callback {
-    void onWorkDone();
-}
-
-class Worker {
-    private int workRemaining = 0;
-    private Step step;
-    private Callback callback;
-
-    public void setWorking(Step step, Callback callback) {
-        workRemaining = step.getName() - 'A' + 1 + 60;
-        this.step = step;
-        this.callback = callback;
-        step.setUndergoing();
-    }
-
-    public void timeTick() {
-        if(workRemaining > 0) {
-            workRemaining--;
+        public char getWork() {
+            return workRemaining > 0 ? step.getName() : '.';
         }
-        if(workRemaining == 0) {
-            if(step != null) {
-                step.setCompleted();
-            }
-            if(callback != null) {
-                callback.onWorkDone();
-                callback = null;
+    }
+
+    class Dispatcher {
+        private Collection<Worker> workers = new ArrayList<>();
+        private Set<Step> workToDo = new HashSet<>();
+
+        public Dispatcher(final int numWorkers) {
+            for(int i = 0; i < numWorkers; i++){
+                workers.add(new Worker());
             }
         }
-    }
 
-    public boolean isAvailable() {
-        return workRemaining == 0;
-    }
-
-    public char getWork() {
-        return workRemaining > 0 ? step.getName() : '.';
-    }
-}
-
-class Dispatcher {
-    private Collection<Worker> workers = new ArrayList<>();
-    private Set<Step> workToDo = new HashSet<>();
-
-    public Dispatcher(final int numWorkers) {
-        for(int i = 0; i < numWorkers; i++){
-            workers.add(new Worker());
+        public void addWork(Step step) {
+            step.setUndergoing();
+            workToDo.add(step);
         }
-    }
 
-    public void addWork(Step step) {
-        step.setUndergoing();
-        workToDo.add(step);
-    }
+        public boolean isWorkerAvailable() {
+            return getAvailableWorker() != null;
+        }
 
-    public boolean isWorkerAvailable() {
-        return getAvailableWorker() != null;
-    }
+        public Worker getAvailableWorker() {
+            for(Worker worker: workers){
+                if(worker.isAvailable()){
+                    return worker;
+                }
+            }
+            return null;
+        }
 
-    public Worker getAvailableWorker() {
-        for(Worker worker: workers){
-            if(worker.isAvailable()){
-                return worker;
+        public void processQueuedWork() {
+            if(!workToDo.isEmpty()) {
+                Iterator<Step> iter = workToDo.iterator();
+                Worker worker = getAvailableWorker();
+                while(worker != null && iter.hasNext()) {
+                    Step step = iter.next();
+                    worker.setWorking(step, null);
+                    iter.remove();
+                    worker = getAvailableWorker();
+                }
             }
         }
-        return null;
-    }
 
-    public void processQueuedWork() {
-        if(!workToDo.isEmpty()) {
-            Iterator<Step> iter = workToDo.iterator();
-            Worker worker = getAvailableWorker();
-            while(worker != null && iter.hasNext()) {
-                Step step = iter.next();
-                worker.setWorking(step, null);
-                iter.remove();
-                worker = getAvailableWorker();
+        public void timeTick() {
+            for(Worker worker: workers) {
+                worker.timeTick();
             }
         }
-    }
 
-    public void timeTick() {
-        for(Worker worker: workers) {
-            worker.timeTick();
-        }
-    }
-
-    public boolean isAllWorkDone() {
-        if(!workToDo.isEmpty()) {
-            return false;
-        }
-
-        for(Worker worker: workers) {
-            if(!worker.isAvailable()){
+        public boolean isAllWorkDone() {
+            if(!workToDo.isEmpty()) {
                 return false;
             }
-        }
 
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        boolean first = true;
-        for(Worker worker: workers) {
-            if(first) {
-                first = false;
+            for(Worker worker: workers) {
+                if(!worker.isAvailable()){
+                    return false;
+                }
             }
-            sb.append(" ");
-            sb.append(worker.getWork());
+
+            return true;
         }
 
-        return sb.toString();
+        @Override
+        public String toString() {
+            StringBuilder sb = new StringBuilder();
+            boolean first = true;
+            for(Worker worker: workers) {
+                if(first) {
+                    first = false;
+                }
+                sb.append(" ");
+                sb.append(worker.getWork());
+            }
+
+            return sb.toString();
+        }
     }
 }
+

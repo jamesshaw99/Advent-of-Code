@@ -72,6 +72,34 @@ public class Main {
         duration = (endTime - startTime);
         TableVals.get(7).set(3, Double.toString(duration/ 1000000.0));
 
+        day9 day9 = new day9("inputs/day9.txt");
+        startTime = System.nanoTime();
+        TableVals.add(Arrays.asList("Day 9: Marble Mania", day9.part1(), day9.part2(),""));
+        endTime = System.nanoTime();
+        duration = (endTime - startTime);
+        TableVals.get(8).set(3, Double.toString(duration/ 1000000.0));
+
+        day10 day10 = new day10("inputs/day10.txt");
+        startTime = System.nanoTime();
+        TableVals.add(Arrays.asList("Day 10: The Stars Align", day10.part1(), day10.part2(),""));
+        endTime = System.nanoTime();
+        duration = (endTime - startTime);
+        TableVals.get(9).set(3, Double.toString(duration/ 1000000.0));
+
+        day11 day11 = new day11("inputs/day11.txt");
+        startTime = System.nanoTime();
+        TableVals.add(Arrays.asList("Day 11: Chronal Charge", day11.part1(), day11.part2(),""));
+        endTime = System.nanoTime();
+        duration = (endTime - startTime);
+        TableVals.get(10).set(3, Double.toString(duration/ 1000000.0));
+
+        day12 day12 = new day12("inputs/day12.txt");
+        startTime = System.nanoTime();
+        TableVals.add(Arrays.asList("Day 12: Subterranean Sustainability", day12.part1(), day12.part2(),""));
+        endTime = System.nanoTime();
+        duration = (endTime - startTime);
+        TableVals.get(11).set(3, Double.toString(duration/ 1000000.0));
+        
         String[] headers = {"Day", "Part 1", "Part 2", "Total Duration (ms)"};
         String[][] data = new String[TableVals.size()][];
         for (int i = 0; i < TableVals.size(); i++) {

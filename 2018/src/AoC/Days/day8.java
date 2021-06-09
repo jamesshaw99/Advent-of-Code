@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Scanner;
 
 public class day8 extends Day {
-    //String testInput = "2 3 0 3 10 11 12 1 1 0 1 99 2 1 1 2";
     List<Integer> data = new ArrayList<>();
     int total;
     Node root = new Node();
@@ -47,35 +46,34 @@ public class day8 extends Day {
         return index + metaData;
     }
 
+    class Node {
+        private List<Node> children = new ArrayList<>();
+        private List<Integer> metaData = new ArrayList<>();
 
-}
-
-class Node {
-    private List<Node> children = new ArrayList<>();
-    private List<Integer> metaData = new ArrayList<>();
-
-    public int value() {
-        if (children.size() == 0) {
-            return metaData.stream().mapToInt(x -> x).sum();
-        } else {
-            int sum = 0;
-            for(Integer meta: metaData) {
-                if(meta <= children.size()){
-                    Node child = children.get(meta - 1);
-                    if(child != null) {
-                        sum += child.value();
+        public int value() {
+            if (children.size() == 0) {
+                return metaData.stream().mapToInt(x -> x).sum();
+            } else {
+                int sum = 0;
+                for(Integer meta: metaData) {
+                    if(meta <= children.size()){
+                        Node child = children.get(meta - 1);
+                        if(child != null) {
+                            sum += child.value();
+                        }
                     }
                 }
+                return sum;
             }
-            return sum;
+        }
+
+        public void addChild(Node child) {
+            this.children.add(child);
+        }
+
+        public void addMetaData(Integer data) {
+            this.metaData.add(data);
         }
     }
-
-    public void addChild(Node child) {
-        this.children.add(child);
-    }
-
-    public void addMetaData(Integer data) {
-        this.metaData.add(data);
-    }
 }
+
