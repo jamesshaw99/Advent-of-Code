@@ -99,6 +99,13 @@ public class Main {
         endTime = System.nanoTime();
         duration = (endTime - startTime);
         TableVals.get(11).set(3, Double.toString(duration/ 1000000.0));
+
+        day13 day13 = new day13("inputs/day13.txt");
+        startTime = System.nanoTime();
+        TableVals.add(Arrays.asList("Day 13: Mine Cart Madness", day13.part1(), day13.part2(),""));
+        endTime = System.nanoTime();
+        duration = (endTime - startTime);
+        TableVals.get(12).set(3, Double.toString(duration/ 1000000.0));
         
         String[] headers = {"Day", "Part 1", "Part 2", "Total Duration (ms)"};
         String[][] data = new String[TableVals.size()][];
