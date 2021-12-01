@@ -106,6 +106,20 @@ public class Main {
         endTime = System.nanoTime();
         duration = (endTime - startTime);
         TableVals.get(12).set(3, Double.toString(duration/ 1000000.0));
+
+        day14 day14 = new day14("inputs/day14.txt");
+        startTime = System.nanoTime();
+        TableVals.add(Arrays.asList("Day 14: Chocolate Charts", day14.part1(), day14.part2(),""));
+        endTime = System.nanoTime();
+        duration = (endTime - startTime);
+        TableVals.get(13).set(3, Double.toString(duration/ 1000000.0));
+
+//        day15 day15 = new day15("inputs/day15.txt");
+//        startTime = System.nanoTime();
+//        TableVals.add(Arrays.asList("Day 15: Beverage Bandits", day15.part1(), day15.part2(),""));
+//        endTime = System.nanoTime();
+//        duration = (endTime - startTime);
+//        TableVals.get(14).set(3, Double.toString(duration/ 1000000.0));
         
         String[] headers = {"Day", "Part 1", "Part 2", "Total Duration (ms)"};
         String[][] data = new String[TableVals.size()][];
