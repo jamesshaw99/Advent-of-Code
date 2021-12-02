@@ -23,6 +23,13 @@ public class Main {
         long duration = (endTime - startTime);
         TableVals.get(0).set(3, Double.toString(duration/ 1000000.0));
 
+        day2 day2 = new day2("inputs/day2.txt");
+        startTime = System.nanoTime();
+        TableVals.add(Arrays.asList("Day 2: Dive!", day2.part1(), day2.part2(),""));
+        endTime = System.nanoTime();
+        duration = (endTime - startTime);
+        TableVals.get(1).set(3, Double.toString(duration/ 1000000.0));
+
         String[] headers = {"Day", "Part 1", "Part 2", "Total Duration (ms)"};
         String[][] data = new String[TableVals.size()][];
         for (int i = 0; i < TableVals.size(); i++) {
