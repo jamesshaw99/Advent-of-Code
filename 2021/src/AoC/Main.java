@@ -16,7 +16,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
         System.out.println("\uD83C\uDF84 \u001b[30mA\u001b[31md\u001b[32mv\u001b[33me\u001b[34mn\u001b[35mt \u001b[36mO\u001b[37mf \u001b[30mC\u001b[31mo\u001b[32md\u001b[33me\u001b[0m \uD83C\uDF84");
 
-        List<String> days = Stream.of("Day 1: Sonar Sweep","Day 2: Dive!","Day 3: Binary Diagnostic").collect(Collectors.toList());
+        List<String> days = Stream.of("Day 1: Sonar Sweep","Day 2: Dive!","Day 3: Binary Diagnostic","Day 4: Giant Squid").collect(Collectors.toList());
 
         List<List<String>> TableVals = new ArrayList<>();
 
