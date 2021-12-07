@@ -4,7 +4,6 @@ import AoC.Helpers.Day;
 
 import java.awt.*;
 import java.util.HashMap;
-import java.util.stream.Collectors;
 
 public class day13 extends Day {
     char[][] tracks;

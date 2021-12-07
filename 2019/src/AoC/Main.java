@@ -1,6 +1,6 @@
 package AoC;
 
-import AoC.days.*;
+import AoC.Days.*;
 import com.jakewharton.fliptables.FlipTable;
 
 import java.util.ArrayList;
