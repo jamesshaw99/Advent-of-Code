@@ -1,6 +1,6 @@
 package AoC.Days;
 
-import AoC.Day;
+import AoC.Helpers.Day;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -23,7 +23,7 @@ public class day7 extends Day {
         }
     }
 
-    public int part1() {
+    public Integer part1() {
         int containsGold = 0;
         for (String bag : bags) {
             Map<String, Integer> contents = getBagContents(targetToContents, bag, false);
@@ -33,7 +33,7 @@ public class day7 extends Day {
         return containsGold;
     }
 
-    public int part2() {
+    public Integer part2() {
         Map<String, Integer> contents = getBagContents(targetToContents, "shiny gold", true);
         int totalBags = 0;
         for (String key: contents.keySet()){

@@ -1,7 +1,7 @@
 package AoC.Days;
 
 import AoC.Helpers.Day;
-import com.sun.xml.internal.bind.v2.util.EditDistance;
+import com.sun.xml.bind.v2.util.EditDistance;
 
 import java.util.HashMap;
 import java.util.Map;

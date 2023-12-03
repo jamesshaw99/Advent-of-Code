@@ -6,7 +6,6 @@ import com.jakewharton.fliptables.FlipTable;
 
 import java.lang.reflect.Constructor;
 import java.util.*;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Main {
@@ -21,8 +20,10 @@ public class Main {
                 "Day 2: Rock Paper Scissors",
                 "Day 3: Rucksack Reorganization",
                 "Day 4: Camp Cleanup",
-                "Day 5: Supply Stacks"
-        ).collect(Collectors.toList());
+                "Day 5: Supply Stacks",
+                "Day 6: Tuning Trouble",
+                "Day 7: No Space Left On Device"
+        ).toList();
 
         List<List<String>> TableVals = new ArrayList<>();
 
@@ -30,7 +31,7 @@ public class Main {
             String dayNum = String.valueOf(i+1);
             Class<?> day = Class.forName("AoC.Days.day" + dayNum);
             Constructor<?> constructor = day.getConstructor(String.class);
-            Day instance = (Day)constructor.newInstance("inputs/day"+dayNum+".txt");
+            Day instance = (Day)constructor.newInstance("2022/inputs/day"+dayNum+".txt");
             long startTime = System.nanoTime();
             TableVals.add(Arrays.asList(days.get(i), instance.part1(), instance.part2(),""));
             long endTime = System.nanoTime();
@@ -45,6 +46,5 @@ public class Main {
             data[i] = row.toArray(new String[0]);
         }
         System.out.println(ANSI_RED + FlipTable.of(headers, data) + ANSI_RESET);
-        System.exit(0); // added as a catch for if threads in day 23 don't terminate correctly
     }
 }

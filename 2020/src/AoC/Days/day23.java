@@ -1,6 +1,6 @@
 package AoC.Days;
 
-import AoC.Day;
+import AoC.Helpers.Day;
 import java.util.Arrays;
 
 public class day23 extends Day {
@@ -33,15 +33,14 @@ public class day23 extends Day {
         Node lastCup = tempCup.prev;
         StringBuilder result = new StringBuilder();
         do {
-            //System.out.print(tempCup.cup);
             result.append(tempCup.cup);
             tempCup = tempCup.next;
         } while (tempCup != lastCup);
-        //System.out.println();
+
         return result.toString();
     }
 
-    public long part2() {
+    public Integer part2() {
         Node currentCup = setup(inputs, 2);
 
         Node oneCup = currentCup;
@@ -55,11 +54,9 @@ public class day23 extends Day {
             Node d = findDestinationCup(currentCup, p);
             placePickedUpCups(p,d);
             currentCup = currentCup.next;
-            //System.out.println("move: " + i + " picked up: " + p + ", " + p.next + ", " + p.next.next);
         }
 
-        //System.out.println("one.next: " + oneCup.next.cup + " o.n.n: " + oneCup.next.next.cup);
-        return (long) oneCup.next.cup * oneCup.next.next.cup;
+        return oneCup.next.cup * oneCup.next.next.cup;
     }
 
     public static void create(Node currentCup, int min, int max) {

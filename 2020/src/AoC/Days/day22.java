@@ -1,6 +1,6 @@
 package AoC.Days;
 
-import AoC.Day;
+import AoC.Helpers.Day;
 
 import java.util.*;
 
@@ -26,7 +26,7 @@ public class day22 extends Day {
         }
     }
 
-    public int part1() {
+    public Integer part1() {
         List<Integer> player = new ArrayList<>(playerStart);
         List<Integer> crab = new ArrayList<>(crabStart);
         while(player.size() > 0 && crab.size() > 0) {
@@ -54,7 +54,7 @@ public class day22 extends Day {
         return score;
     }
 
-    public int part2() {
+    public Integer part2() {
         List<Integer> recursivePlayer = new ArrayList<>(playerStart);
         List<Integer> recursiveCrab = new ArrayList<>(crabStart);
         List<Integer> cardsToCount = new ArrayList<>();

@@ -1,6 +1,6 @@
 package AoC.Days;
 
-import AoC.Day;
+import AoC.Helpers.Day;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,7 +10,7 @@ public class day14 extends Day {
         super(fileStr);
     }
 
-    public long part1() {
+    public Long part1() {
         String bitmask ="", value;
         long memLocation;
         Map<Long, Long> memory = new HashMap<>();
@@ -38,7 +38,7 @@ public class day14 extends Day {
         return sum;
     }
 
-    public long part2() {
+    public Long part2() {
         String bitmask ="", value;
         Map<Long, Long> memory = new HashMap<>();
         String memLocation;

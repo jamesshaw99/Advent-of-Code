@@ -1,4 +1,4 @@
-package AoC;
+package AoC.Helpers;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -22,5 +22,13 @@ public class Day {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public <T> T part1() throws Exception {
+        return (T)"Not completed yet";
+    }
+
+    public <T> T part2() throws Exception {
+        return (T)"Not completed yet";
     }
 }

@@ -1,6 +1,6 @@
 package AoC.Days;
 
-import AoC.Day;
+import AoC.Helpers.Day;
 
 import java.util.*;
 
@@ -10,7 +10,7 @@ public class day6 extends Day {
         input.add("");
     }
 
-    public int part1() {
+    public Integer part1() {
         List<Integer> counts = new ArrayList<>();
         int count = 0;
         List<Character> seenChars = new ArrayList<>();
@@ -31,7 +31,7 @@ public class day6 extends Day {
         return counts.stream().mapToInt(Integer::intValue).sum();
     }
 
-    public int part2() {
+    public Integer part2() {
         List<Integer> counts = new ArrayList<>();
         List<String> answers = new ArrayList<>();
         for(String line: input) {

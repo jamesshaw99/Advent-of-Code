@@ -1,4 +1,4 @@
-package AoC;
+package AoC.Helpers;
 
 import java.util.*;
 import java.util.function.Consumer;

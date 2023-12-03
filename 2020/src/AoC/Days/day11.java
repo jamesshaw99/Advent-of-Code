@@ -1,6 +1,6 @@
 package AoC.Days;
 
-import AoC.Day;
+import AoC.Helpers.Day;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +13,7 @@ public class day11 extends Day {
         seatsStart = new ArrayList<>(input);
     }
 
-    public int part1() {
+    public Integer part1() {
         seatsEnd = new ArrayList<>(seatsStart);
         int seatChanges = Integer.MAX_VALUE;
         int seats = 0;
@@ -44,7 +44,7 @@ public class day11 extends Day {
         return seats;
     }
 
-    public int part2() {
+    public Integer part2() {
         seatsStart = new ArrayList<>(input);
         seatsEnd = new ArrayList<>(seatsStart);
         int seatChanges = Integer.MAX_VALUE;

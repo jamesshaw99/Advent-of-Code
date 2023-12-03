@@ -6,7 +6,6 @@ import com.jakewharton.fliptables.FlipTable;
 
 import java.lang.reflect.Constructor;
 import java.util.*;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Main {
@@ -28,8 +27,9 @@ public class Main {
                 "Day 9: Smoke Basin",
                 "Day 10: Syntax Scoring",
                 "Day 11: Dumbo Octopus",
-                "Day 12: Passage Pathing"
-        ).collect(Collectors.toList());
+                "Day 12: Passage Pathing",
+                "Day 13: Transparent Origami"
+        ).toList();
 
         List<List<String>> TableVals = new ArrayList<>();
 
@@ -37,7 +37,7 @@ public class Main {
             String dayNum = String.valueOf(i+1);
             Class<?> day = Class.forName("AoC.Days.day" + dayNum);
             Constructor<?> constructor = day.getConstructor(String.class);
-            Day instance = (Day)constructor.newInstance("inputs/day"+dayNum+".txt");
+            Day instance = (Day)constructor.newInstance("2021/inputs/day"+dayNum+".txt");
             long startTime = System.nanoTime();
             TableVals.add(Arrays.asList(days.get(i), instance.part1(), instance.part2(),""));
             long endTime = System.nanoTime();

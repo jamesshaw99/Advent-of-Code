@@ -1,6 +1,6 @@
 package AoC.Days;
 
-import AoC.Day;
+import AoC.Helpers.Day;
 
 import java.util.*;
 
@@ -13,7 +13,7 @@ public class day13 extends Day {
         busIDs = Arrays.asList(input.get(1).split(","));
     }
 
-    public int part1() {
+    public Integer part1() {
         int busID = 0, busTime = 0;
         for(String bus: busIDs){
             if (!bus.equals("x")){
@@ -27,7 +27,7 @@ public class day13 extends Day {
         return busID * (busTime - earliestTimestamp);
     }
 
-    public long part2() {
+    public Long part2() {
         List<Integer> n = new ArrayList<>();
         List<Integer> b = new ArrayList<>();
         List<Long> Ns = new ArrayList<>();

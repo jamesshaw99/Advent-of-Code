@@ -1,7 +1,6 @@
 package AoC.Days;
 
 import AoC.Helpers.Day;
-import com.sun.deploy.util.StringUtils;
 
 import java.awt.*;
 import java.util.ArrayList;

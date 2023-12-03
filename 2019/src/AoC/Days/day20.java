@@ -15,7 +15,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 public class day20 extends Day {
     private final String puzzleInput;
@@ -62,7 +61,14 @@ public class day20 extends Day {
             });
 
             this.graph = GraphBuilder.buildUndirectedGraph(tunnels, point -> adjacentPoints(tunnels, portals, point));
-            GraphBuilder.reduceGraph(this.graph, Sets.union(portals.keySet(), Set.of(this.start, this.end)));
+            Set<Point> set = new HashSet<>() {
+                {
+                    addAll(portals.keySet());
+                    addAll(Set.of(start, end));
+                }
+            };
+            GraphBuilder.reduceGraph(this.graph, set);
+
         }
 
         private long getShortestPathLength() {
@@ -316,7 +322,7 @@ public class day20 extends Day {
 
     private static String[][] getRawGrid(String input) {
         input = input.replace("\r\n", "\n");
-        List<String> lines = input.lines().collect(Collectors.toList());
+        List<String> lines = input.lines().toList();
         int height = lines.size();
         int width = lines.get(0).length();
 

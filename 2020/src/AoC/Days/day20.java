@@ -1,6 +1,6 @@
 package AoC.Days;
 
-import AoC.Day;
+import AoC.Helpers.Day;
 
 import java.util.*;
 import java.util.regex.Matcher;
@@ -43,7 +43,7 @@ public class day20 extends Day {
         }
     }
 
-    public long part1() {
+    public Long part1() {
         long result = 1;
         for (Tile tile: tiles.values()) {
             int count = 0;
@@ -59,7 +59,7 @@ public class day20 extends Day {
         return result;
     }
 
-    public int part2() {
+    public Integer part2() {
         for (Tile tile: tiles.values()) {
             int count = 0;
             if (tile.topTile == 0) count++;

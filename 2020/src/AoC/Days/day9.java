@@ -1,6 +1,6 @@
 package AoC.Days;
 
-import AoC.Day;
+import AoC.Helpers.Day;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +12,7 @@ public class day9 extends Day {
         for(String s: input) data.add(Long.valueOf(s));
     }
 
-    public long part1() {
+    public Long part1() {
         int preambleLen = 25;
         Long result = 0L;
         for (int i = 0; i < data.size(); i++) {
@@ -38,7 +38,7 @@ public class day9 extends Day {
         return result;
     }
 
-    public long part2() {
+    public Long part2() {
         Long goal = this.part1();
         for (int i = 0; i < data.size()-1; i++){
             Long sum = data.get(i),
@@ -52,10 +52,10 @@ public class day9 extends Day {
                     break;
                 }
                 if(sum.equals(goal)) {
-                    return (min + max);
+                    return min + max;
                 }
             }
         }
-        return 0;
+        return 0L;
     }
 }

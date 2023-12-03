@@ -1,7 +1,7 @@
 package AoC.Days;
 
-import AoC.ConwayCubes;
-import AoC.Day;
+import AoC.Helpers.ConwayCubes;
+import AoC.Helpers.Day;
 
 public class day17 extends Day {
     private String[] lines;
@@ -11,13 +11,13 @@ public class day17 extends Day {
         lines = input.toArray(new String[0]);
     }
 
-    public int part1() {
+    public Integer part1() {
         ConwayCubes conwayCubes = ConwayCubes.from(lines, 3);
         conwayCubes.transitionToNextState(6);
         return conwayCubes.activeCubesCount();
     }
 
-    public int part2() {
+    public Integer part2() {
         ConwayCubes conwayCubes = ConwayCubes.from(lines, 4);
         conwayCubes.transitionToNextState(6);
         return conwayCubes.activeCubesCount();

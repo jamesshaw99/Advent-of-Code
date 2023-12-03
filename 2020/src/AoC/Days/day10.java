@@ -1,6 +1,6 @@
 package AoC.Days;
 
-import AoC.Day;
+import AoC.Helpers.Day;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -18,7 +18,7 @@ public class day10 extends Day {
         adapters.add(deviceJoltage);
     }
 
-    public int part1() {
+    public Integer part1() {
         int no1Jolt = 0, no3Jolt = 0, difference;
         for (int i = 1; i < adapters.size(); i++) {
             difference = adapters.get(i) - adapters.get(i - 1);

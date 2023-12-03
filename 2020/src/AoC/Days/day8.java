@@ -1,6 +1,6 @@
 package AoC.Days;
 
-import AoC.Day;
+import AoC.Helpers.Day;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,11 +13,11 @@ public class day8 extends Day {
         result = run(input);
     }
 
-    public int part1() {
+    public Integer part1() {
         return result.acc;
     }
 
-    public int part2() {
+    public Integer part2() {
         while(result.msg.equals("INFINITE")){
             List<String> newInstructions = new ArrayList<>(input);
             for (int i = 0; i < newInstructions.size(); i++) {

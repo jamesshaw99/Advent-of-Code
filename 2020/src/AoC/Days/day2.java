@@ -1,6 +1,6 @@
 package AoC.Days;
 
-import AoC.Day;
+import AoC.Helpers.Day;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,7 +16,7 @@ public class day2 extends Day {
         }
     }
 
-    public int part1() {
+    public Integer part1() {
         int noValid = 0;
         for (List<String> line : lines) {
             int columnNo = 1;
@@ -46,7 +46,7 @@ public class day2 extends Day {
 
     }
 
-    public int part2() {
+    public Integer part2() {
         int noValid2 = 0;
         for(List<String> line: lines) {
             int columnNo = 1;

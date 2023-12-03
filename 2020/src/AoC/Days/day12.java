@@ -1,6 +1,6 @@
 package AoC.Days;
 
-import AoC.Day;
+import AoC.Helpers.Day;
 
 public class day12 extends Day {
     private int x = 0, y = 0, deg = 90,
@@ -9,7 +9,7 @@ public class day12 extends Day {
         super(fileStr);
     }
 
-    public int part1() {
+    public Integer part1() {
         for (String inst: input) {
             char direction = inst.charAt(0);
             int value = Integer.parseInt(inst.substring(1));
@@ -37,7 +37,7 @@ public class day12 extends Day {
         return Math.abs(x)+Math.abs(y);
     }
 
-    public int part2() {
+    public Integer part2() {
         x = 0;
         y = 0;
         deg = 90;

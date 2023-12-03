@@ -1,6 +1,6 @@
 package AoC.Days;
 
-import AoC.Day;
+import AoC.Helpers.Day;
 
 import java.util.*;
 import java.util.regex.Matcher;
@@ -27,7 +27,7 @@ public class day4 extends Day {
         passports.add(passport);
     }
 
-    public int part1() {
+    public Integer part1() {
         int validPassports = 0, NoFields;
         String[] reqFields = "byr,iyr,eyr,hgt,hcl,ecl,pid".split(",");
         for(Map<String, String> passportData : passports){
@@ -45,7 +45,7 @@ public class day4 extends Day {
         return validPassports;
     }
 
-    public int part2() {
+    public Integer part2() {
         int validPassports = 0;
         String[] reqFields = "byr,iyr,eyr,hgt,hcl,ecl,pid".split(",");
         for (Map<String, String> passportData : passports) {

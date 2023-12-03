@@ -1,6 +1,6 @@
 package AoC.Days;
 
-import AoC.Day;
+import AoC.Helpers.Day;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,7 +28,7 @@ public class day19 extends Day {
         }
     }
 
-    public long part1() {
+    public Long part1() {
         String regex = rules.get(0);
         while (!regex.matches("^[a-z \"\\|\\(\\)]+$")) {
             final StringBuilder builder = new StringBuilder();
@@ -48,7 +48,7 @@ public class day19 extends Day {
         return messages.stream().filter(a -> a.matches(pattern)).count();
     }
 
-    public long part2() {
+    public Long part2() {
         rules.put(8, "42 | 42 8");
         rules.put(11, "42 31 | 42 11 31");
 

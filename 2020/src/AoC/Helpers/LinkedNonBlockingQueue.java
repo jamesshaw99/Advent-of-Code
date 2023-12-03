@@ -1,4 +1,4 @@
-package AoC;
+package AoC.Helpers;
 
 import java.util.Collection;
 import java.util.LinkedList;

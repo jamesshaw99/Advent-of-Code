@@ -1,6 +1,6 @@
 package AoC.Days;
 
-import AoC.Day;
+import AoC.Helpers.Day;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -15,7 +15,7 @@ public class day1 extends Day {
         Collections.sort(intList);
     }
 
-    public int part1() {
+    public Integer part1() {
         int l = 0, r = intList.size() - 1, result = 0;
 
         while (l < r) {
@@ -31,7 +31,7 @@ public class day1 extends Day {
         return result;
     }
 
-    public int part2(){
+    public Integer part2(){
         int result = 0;
         for(int i = 0; i < intList.size() - 2; i++) {
             for(int j = i + 1; j < intList.size() - 1; j++) {

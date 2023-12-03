@@ -38,7 +38,6 @@ public class day24 extends Day {
     public String part1()  {
         char[][] grid = copy(initialGrid);
         while(true) {
-
             if(!grids.add(new Grid(grid))) {
                 return "biodiversity rating: " + calcRes(grid);
             }

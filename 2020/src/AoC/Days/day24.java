@@ -1,6 +1,6 @@
 package AoC.Days;
 
-import AoC.Day;
+import AoC.Helpers.Day;
 
 import java.awt.*;
 import java.util.HashMap;
@@ -22,7 +22,7 @@ public class day24 extends Day {
         coords.put("w", new Point(-2, 0));
     }
 
-    public int part1() {
+    public Integer part1() {
         for(String line: input) {
             int x = 0, y = 0,  i = 0;
             while (i < line.length()){
@@ -45,7 +45,7 @@ public class day24 extends Day {
         return blackTiles.size();
     }
 
-    public int part2() {
+    public Integer part2() {
         for (int i = 0; i < 100; i++) {
             Set<Point> toDiscard = new HashSet<>();
             Set<Point> toAdd = new HashSet<>();

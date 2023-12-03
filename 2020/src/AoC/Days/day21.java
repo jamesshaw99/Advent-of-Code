@@ -1,6 +1,6 @@
 package AoC.Days;
 
-import AoC.Day;
+import AoC.Helpers.Day;
 
 import java.util.*;
 
@@ -49,7 +49,7 @@ public class day21 extends Day {
         }
     }
 
-    public int part1() {
+    public Integer part1() {
 
         int count = 0;
         for (String line : input) {

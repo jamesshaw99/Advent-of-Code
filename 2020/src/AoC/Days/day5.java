@@ -1,6 +1,6 @@
 package AoC.Days;
 
-import AoC.Day;
+import AoC.Helpers.Day;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -17,11 +17,11 @@ public class day5 extends Day {
         }
     }
 
-    public int part1() {
+    public Integer part1() {
         return Collections.max(SeatIDs);
     }
 
-    public int part2() {
+    public Integer part2() {
         int output = 0;
         for(int i = Collections.min(SeatIDs); i < Collections.max(SeatIDs); i++){
             if(!SeatIDs.contains(i)){

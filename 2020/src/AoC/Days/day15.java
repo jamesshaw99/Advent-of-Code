@@ -1,7 +1,7 @@
 package AoC.Days;
 
-import AoC.Day;
-import AoC.LinkedNonBlockingQueue;
+import AoC.Helpers.Day;
+import AoC.Helpers.LinkedNonBlockingQueue;
 
 import java.util.HashMap;
 
@@ -26,14 +26,14 @@ public class day15 extends Day {
         }
     }
 
-    public int part1() {
+    public Integer part1() {
         while(turnNumber < 2020) {
             nextTurn();
         }
         return lastNumber;
     }
 
-    public int part2() {
+    public Integer part2() {
         while(turnNumber < 30000000) {
             nextTurn();
         }

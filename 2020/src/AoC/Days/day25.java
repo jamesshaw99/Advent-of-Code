@@ -1,6 +1,6 @@
 package AoC.Days;
 
-import AoC.Day;
+import AoC.Helpers.Day;
 
 public class day25 extends Day {
     private int card, door, subjectNo = 1;
@@ -17,12 +17,12 @@ public class day25 extends Day {
         }
     }
 
-    public long part1() {
+    public Long part1() {
         return getEncryptionKey(card, getLoopSize(door));
     }
 
-    public int part2() {
-        return 0;
+    public String part2() {
+        return "I Won";
     }
 
     private int getLoopSize(int n) {
