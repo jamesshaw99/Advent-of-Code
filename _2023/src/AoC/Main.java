@@ -18,7 +18,8 @@ public class Main {
         List<String> days = List.of(
                 "Day 1: Trebuchet?!",
                 "Day 2: Cube Conundrum",
-                "Day 3: Gear Ratios"
+                "Day 3: Gear Ratios",
+                "Day 4: Scratchcards"
         );
         List<List<String>> tableVals = new ArrayList<>();
 
