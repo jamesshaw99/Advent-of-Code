@@ -3,7 +3,6 @@ package AoC.Days;
 import AoC.Helpers.Day;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Day5 extends Day {
     long[] seeds;
@@ -51,7 +50,7 @@ public class Day5 extends Day {
     }
 
     private void parseInput() {
-        maps = new List[7]; // Initialize an array to store maps for each section
+        maps = new List[7];
 
         int section = 0;
         for (String line : input) {

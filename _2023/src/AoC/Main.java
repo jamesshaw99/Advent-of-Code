@@ -20,7 +20,8 @@ public class Main {
                 "Day 2: Cube Conundrum",
                 "Day 3: Gear Ratios",
                 "Day 4: Scratchcards",
-                "Day 5: If You Give A Seed A Fertilizer"
+                "Day 5: If You Give A Seed A Fertilizer",
+                "Day 6: Wait For It"
         );
         List<List<String>> tableVals = new ArrayList<>();
 
