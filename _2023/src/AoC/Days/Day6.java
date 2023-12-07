@@ -23,8 +23,6 @@ public class Day6 extends Day {
     public String part2() {
         time = Arrays.stream(input.get(0).replace("Time: ", "").replaceAll("\\s+", "").split(" ")).mapToLong(Long::parseLong).toArray();
         distance = Arrays.stream(input.get(1).replace("Distance: ", "").replaceAll("\\s+", "").split(" ")).mapToLong(Long::parseLong).toArray();
-        System.out.println(Arrays.toString(time));
-        System.out.println(Arrays.toString(distance));
         long result = calculateWaysToBeatRecord(time, distance);
 
         return "Total number of ways to win: " + result;
