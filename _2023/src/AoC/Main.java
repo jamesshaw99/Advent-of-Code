@@ -23,7 +23,9 @@ public class Main {
                 "Day 5: If You Give A Seed A Fertilizer",
                 "Day 6: Wait For It",
                 "Day 7: Camel Cards",
-                "Day 8: Haunted Wasteland"
+                "Day 8: Haunted Wasteland",
+                "Day 9: Mirage Maintenance",
+                "Day 10: Pipe Maze"
         );
         List<List<String>> tableVals = new ArrayList<>();
 
