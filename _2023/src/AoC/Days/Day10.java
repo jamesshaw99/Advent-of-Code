@@ -34,43 +34,21 @@ public class Day10 extends Day {
         return "Steps to farthest point: " + steps;
     }
 
-//    public String part2() {
-//        int enclosedTiles = 0;
-//        boolean inLoop = false;
-//        boolean onLine = false;
-//
-//        for (int i = 0; i < grid.length; i++) {
-//            for (int j = 0; j < grid[0].length; j++) {
-//                if (visited[i][j] && !onLine && "|SLF7J".indexOf(grid[i][j]) >= 0) {
-//                    inLoop = !inLoop;
-//                }
-//
-//                if(inLoop && !visited[i][j]){
-//                    System.out.println(i + ", " + j);
-//                    enclosedTiles++;
-//                }
-//            }
-//        }
-//
-//        return "Tiles enclosed by the loop: " + enclosedTiles;
-//    }
+    public String part2() {
+        int enclosedTiles = countEnclosedTiles();
+        return "Tiles enclosed by the loop: " + enclosedTiles;
+    }
 
     public long findFarthestPoint() {
         long[][] distances = new long[grid.length][grid[0].length];
-        int startRow = -1, startCol = -1;
+        int[] startCoords = findStartCoordinates();
 
-        for (int i = 0; i < grid.length; i++) {
-            for (int j = 0; j < grid[0].length; j++) {
-                if (grid[i][j] == 'S') {
-                    startRow = i;
-                    startCol = j;
-                    break;
-                }
-            }
-        }
+        dfs(startCoords[0], startCoords[1], distances, 0);
 
-        dfs(startRow, startCol, distances, 0);
+        return getMaxDistance(distances)-1;
+    }
 
+    private long getMaxDistance(long[][] distances) {
         long maxDistance = 0;
         for (long[] distance : distances) {
             for (long j : distance) {
@@ -80,7 +58,23 @@ public class Day10 extends Day {
             }
         }
 
-        return maxDistance - 1;
+        return maxDistance;
+    }
+
+    private int[] findStartCoordinates() {
+        int[] startCoords = {-1, -1};
+
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[0].length; j++) {
+                if (grid[i][j] == 'S') {
+                    startCoords[0] = i;
+                    startCoords[1] = j;
+                    break;
+                }
+            }
+        }
+
+        return startCoords;
     }
 
     private void dfs(int startRow, int startCol, long[][] distances, int curDistance) {
@@ -160,5 +154,50 @@ public class Day10 extends Day {
             default:
                 return false;
         }
+    }
+
+
+    public int countEnclosedTiles() {
+        int enclosedTiles = 0;
+
+        for (int i = 0; i < grid.length; i++) {
+            boolean inLoop = false;
+            for (int j = 0; j < grid[0].length; j++) {
+                inLoop = isCellInLoop(i, j, inLoop);
+
+                if(inLoop && !visited[i][j]){
+                    enclosedTiles++;
+                }
+            }
+        }
+
+        return enclosedTiles;
+    }
+
+    private boolean isCellInLoop(int row, int col, boolean current) {
+        if (visited[row][col] && grid[row][col] == '|') {
+            return !current;
+        }
+        if(visited[row][col] && grid[row][col] == '7'){
+            for(int x = col; x > 0; x--){
+                if(grid[row][x] == 'F'){
+                    break;
+                }
+                if(grid[row][x] == 'L'){
+                    return !current;
+                }
+            }
+        }
+        if(visited[row][col] && grid[row][col] == 'J'){
+            for(int x = col; x > 0; x--){
+                if(grid[row][x] == 'L'){
+                    break;
+                }
+                if(grid[row][x] == 'F'){
+                    return !current;
+                }
+            }
+        }
+        return current;
     }
 }
