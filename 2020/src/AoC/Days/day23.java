@@ -18,7 +18,6 @@ public class day23 extends Day {
             Node d = findDestinationCup(currentCup, p);
             placePickedUpCups(p, d);
             currentCup = currentCup.next;
-            //System.out.println("move: " + i + " picked up: " + p + ", " + p.next + ", " + p.next.next);
         }
 
         Node tempCup = currentCup;
@@ -48,7 +47,6 @@ public class day23 extends Day {
             oneCup = oneCup.next;
         }
 
-        //System.out.println("Part2: ");
         for (int i = 0; i < 10000000; i++) {
             Node p = removeNext3(currentCup);
             Node d = findDestinationCup(currentCup, p);
@@ -176,86 +174,3 @@ public class day23 extends Day {
         }
     }
 }
-    /*
-    private final List<Integer> cups = new ArrayList<>();
-    private int currentCup;
-    public day23(String fileStr) {
-        super(fileStr);
-        int i = Integer.parseInt(input.get(0));
-        while(i > 0) {
-            cups.add(i % 10);
-            i /= 10;
-        }
-        Collections.reverse(cups);
-        currentCup = cups.get(0);
-    }
-
-    public String part1() {
-        for (int i = 0; i < 100; i++) {
-            move();
-        }
-
-        int loc1 = cups.indexOf(1);
-        StringBuilder result = new StringBuilder();
-        for (int i = loc1+1; i < cups.size(); i++){
-            result.append(cups.get(i));
-        }
-        for(int i = 0; i < loc1; i++){
-            result.append(cups.get(i));
-        }
-        return result.toString();
-    }
-
-    public int part2() {
-        for (int i = Collections.max(cups)+1; i <= 1000000; i++){
-            cups.add(i);
-        }
-
-        for (int i = 0; i < 10000000; i++) {
-            move();
-        }
-
-        int pos1 = cups.indexOf(1);
-        int star1 = cups.get(pos1+1);
-        int star2 = cups.get(pos1+2);
-        System.out.println(star1);
-        System.out.println(star2);
-        return 0;
-    }
-
-    public void move() {
-        int currentCupLoc = cups.indexOf(currentCup) + 1;
-        List<Integer> pickup = new ArrayList<>();
-
-        for (int i = 0; i < 3; i++) {
-            if (currentCupLoc < cups.size()) {
-                pickup.add(cups.remove(currentCupLoc));
-            } else {
-                pickup.add(cups.remove(0));
-            }
-        }
-
-        int destination = currentCup-1;
-        if (destination < Collections.min(cups)){
-            destination = Collections.max(cups);
-        }
-        while(pickup.contains(destination)){
-            destination--;
-            if (destination < Collections.min(cups)){
-                destination = Collections.max(cups);
-            }
-        }
-
-        for (int j = cups.indexOf(destination)+1; j <= cups.indexOf(destination)+3; j++) {
-            cups.add(j, pickup.remove(0));
-        }
-
-        currentCupLoc = cups.indexOf(currentCup)+1;
-        if (currentCupLoc < cups.size()) {
-            currentCup = cups.get(currentCupLoc);
-        } else {
-            currentCup = cups.get(0);
-        }
-    }
-}
-*/
